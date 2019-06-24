@@ -103,9 +103,9 @@
 11. 项目计划进度文档
     
 ## 八、代码仓库地址
-[https://github.com/yuuyoo/iKeeping_parent][仓库地址]
+[https://github.com/yuuyoo/ikeeping_parent][仓库地址]
 
-[仓库地址]: https://github.com/yuuyoo/shop_parent
+[仓库地址]: https://github.com/yuuyoo/ikeeping_parent
 	
 ## 项目成员
 - 段继亮 （主负责人）
