@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>ikeeping_api</module>
+        <module>ikeeping_common</module>
+        <module>ikeeping_entity</module>
+        <module>ikeeping_eureka</module>
+        <module>ikeeping_message</module>
+        <module>ikeeping_loginApi</module>
+        <module>ikeeping_payApi</module>
+        <module>ikeeping_resourceApi</module>
+        <module>ikeeping_serverLogin</module>
+        <module>ikeeping_serverUser</module>
+        <module>ikeeping_esApi</module>
+        <module>ikeeping_serverShop</module>
+        <module>ikeeping_sns</module>
+        <module>ikeeping_news</module>
+        <module>ikeeping_sports</module>
+        <module>ikeeping_news</module>
+        <module>ikeeping_sports</module>
+        <module>ikeeping_transportation</module>
+    </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.5.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.zz.ikeeping</groupId>
+    <artifactId>ikeeping_parent</artifactId>
+    <version>0.1</version>
+    <name>ikeeping_parent</name>
+    <description>基于SpringBoot+SpringCloud的健身网站</description>
+
+    <!-- 版本号声明 -->
+    <properties>
+        <!-- JDK版本 -->
+        <java.version>1.8</java.version>
+        <!-- Eureka注册中心版本 -->
+        <eureka.version>2.1.1.RELEASE</eureka.version>
+        <!-- Swagger API在线文档管理版本 -->
+        <swagger.version>2.9.2</swagger.version>
+        <!-- MySQL数据库驱动版本 -->
+        <mysql.version>8.0.16</mysql.version>
+        <!-- MyBatisBoot ORM框架版本 -->
+        <mybatisboot.version>2.0.1</mybatisboot.version>
+        <!-- Druid 数据库连接池版本    -->
+        <druid.version>1.1.17</druid.version>
+        <!-- shop 版本 -->
+        <shop.version>0.1</shop.version>
+        <!-- Feign 声明式REST客户端版本 -->
+        <feign.version>2.1.1.RELEASE</feign.version>
+        <!-- Jedis Redis的Java 客户端版本 -->
+        <jedis.version>3.0.1</jedis.version>
+        <!-- Java Mail处理电子邮件的版本 -->
+        <mail.version>1.4.7</mail.version>
+        <!-- FastJson Json字符处理的版本 -->
+        <fastjson.version>1.2.58</fastjson.version>
+        <!-- LomBok Java对象注解的版本 -->
+        <lombok.version>1.16.20</lombok.version>
+        <!-- PageHelpBoot MyBatis分页处理的版本 -->
+        <pagehelperboot.version>1.2.12</pagehelperboot.version>
+        <!-- test单元测试的版本 -->
+        <test.version>2.1.5.RELEASE</test.version>
+        <!-- JWt Json web token 版本 -->
+        <jwt.version>3.8.1</jwt.version>
+        <!-- JJWT是一个提供端到端的JWT创建和验证的Java库 版本 -->
+        <jjwt.version>0.9.1</jjwt.version>
+        <!-- spring data elasticsearch 版本 -->
+        <es.version>3.1.8.RELEASE</es.version>
+        <!-- 连接elasticsearch集群的远程工具 -->
+        <tranport.version>6.2.2</tranport.version>
+
+    </properties>
+
+    <!-- 版本限定 -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+                <version>${eureka.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+                <version>${eureka.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatisboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.djl.shop</groupId>
+                <artifactId>shop_common</artifactId>
+                <version>${shop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.djl.shop</groupId>
+                <artifactId>shop_entity</artifactId>
+                <version>${shop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${feign.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>${mail.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelperboot.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${test.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-elasticsearch -->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-elasticsearch</artifactId>
+                <version>${es.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.elasticsearch.client/transport -->
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>transport</artifactId>
+                <version>${tranport.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>
