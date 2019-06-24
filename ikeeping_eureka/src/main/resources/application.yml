@@ -1,0 +1,11 @@
+#服务器端口号 Eureka默认的端口号 8761
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: localhost #服务器地址
+  client:
+    register-with-eureka: false #是否注册 注册中心不需要注册 默认开启需关闭
+    fetch-registry: false #检查注册中心 默认开启需关闭
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/   #提供者和消费者要使用的地址
