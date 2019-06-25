@@ -22,6 +22,7 @@
         <module>ikeeping_news</module>
         <module>ikeeping_sports</module>
         <module>ikeeping_transportation</module>
+        <module>iKepping_0001</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
