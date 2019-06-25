@@ -22,7 +22,6 @@
         <module>ikeeping_news</module>
         <module>ikeeping_sports</module>
         <module>ikeeping_transportation</module>
-        <module>iKepping_0001</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -124,7 +123,7 @@
             </dependency>
             <dependency>
                 <groupId>com.zz.ikeeping</groupId>
-                <artifactId>shop_entity</artifactId>
+                <artifactId>ikeeping_entity</artifactId>
                 <version>${entity.version}</version>
             </dependency>
             <dependency>
