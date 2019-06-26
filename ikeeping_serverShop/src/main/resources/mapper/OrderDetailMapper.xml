@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.ikeeping.server.shop.dao.OrderDetailMapper">
+  <resultMap id="BaseResultMap" type="com.zz.ikeeping.entity.OrderDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="oid" jdbcType="INTEGER" property="oid" />
+    <result column="gid" jdbcType="INTEGER" property="gid" />
+    <result column="odid" jdbcType="VARCHAR" property="odid" />
+    <result column="goodscount" jdbcType="INTEGER" property="goodscount" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, oid, gid, odid, goodscount, price
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_orderdetail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_orderdetail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zz.ikeeping.entity.OrderDetail">
+    insert into t_orderdetail (id, oid, gid, 
+      odid, goodscount, price
+      )
+    values (#{id,jdbcType=INTEGER}, #{oid,jdbcType=INTEGER}, #{gid,jdbcType=INTEGER}, 
+      #{odid,jdbcType=VARCHAR}, #{goodscount,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zz.ikeeping.entity.OrderDetail">
+    insert into t_orderdetail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="oid != null">
+        oid,
+      </if>
+      <if test="gid != null">
+        gid,
+      </if>
+      <if test="odid != null">
+        odid,
+      </if>
+      <if test="goodscount != null">
+        goodscount,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="oid != null">
+        #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="gid != null">
+        #{gid,jdbcType=INTEGER},
+      </if>
+      <if test="odid != null">
+        #{odid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodscount != null">
+        #{goodscount,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zz.ikeeping.entity.OrderDetail">
+    update t_orderdetail
+    <set>
+      <if test="oid != null">
+        oid = #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="gid != null">
+        gid = #{gid,jdbcType=INTEGER},
+      </if>
+      <if test="odid != null">
+        odid = #{odid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodscount != null">
+        goodscount = #{goodscount,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.ikeeping.entity.OrderDetail">
+    update t_orderdetail
+    set oid = #{oid,jdbcType=INTEGER},
+      gid = #{gid,jdbcType=INTEGER},
+      odid = #{odid,jdbcType=VARCHAR},
+      goodscount = #{goodscount,jdbcType=INTEGER},
+      price = #{price,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
