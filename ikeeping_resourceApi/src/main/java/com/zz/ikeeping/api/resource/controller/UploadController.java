@@ -1,6 +1,7 @@
 package com.zz.ikeeping.api.resource.controller;
 
 import com.zz.ikeeping.api.resource.util.KodoUtil;
+import com.zz.ikeeping.common.vo.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
  **/
 @RestController
 @Api(value = "文件上传的API接口", tags = "文件上传至七牛云的数据接口")
-public class UplodaController {
+public class UploadController {
 
     @Autowired(required = false)
     private KodoUtil KodoUtil;
