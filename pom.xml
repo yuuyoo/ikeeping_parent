@@ -13,7 +13,6 @@
         <module>ikeeping_payApi</module>
         <module>ikeeping_resourceApi</module>
         <module>ikeeping_serverLogin</module>
-        <module>ikeeping_serverUser</module>
         <module>ikeeping_esApi</module>
         <module>ikeeping_serverShop</module>
         <module>ikeeping_sns</module>
@@ -23,6 +22,7 @@
         <module>ikeeping_sports</module>
         <module>ikeeping_transportation</module>
         <module>ikeeping_sns</module>
+        <module>ikeeping_serviceUser</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
