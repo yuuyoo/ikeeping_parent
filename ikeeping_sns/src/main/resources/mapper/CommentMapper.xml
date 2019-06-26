@@ -14,4 +14,9 @@
     rid, ruid, rcontent, rimgurl, rnumber, rcount, rzan
   </sql>
 
+  <select id="selectComment" resultType="com.zz.ikeeping.enyity.Comment">
+    SELECT u.imgurl, u.uname, cd.content, cd.imgurl deimg, cd.pubtime, cd.location FROM t_communitydetail cd
+    inner join t_user u
+    on cd.uid = u.uid;
+  </select>
 </mapper>
