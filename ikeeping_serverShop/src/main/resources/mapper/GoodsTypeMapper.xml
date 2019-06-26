@@ -21,9 +21,9 @@
   </delete>
   <insert id="insert" parameterType="com.zz.ikeeping.entity.GoodsType">
     insert into t_goodstype (id, typename, typelevel
-      )
+    )
     values (#{id,jdbcType=INTEGER}, #{typename,jdbcType=VARCHAR}, #{typelevel,jdbcType=INTEGER}
-      )
+    )
   </insert>
   <insert id="insertSelective" parameterType="com.zz.ikeeping.entity.GoodsType">
     insert into t_goodstype
@@ -65,7 +65,14 @@
   <update id="updateByPrimaryKey" parameterType="com.zz.ikeeping.entity.GoodsType">
     update t_goodstype
     set typename = #{typename,jdbcType=VARCHAR},
-      typelevel = #{typelevel,jdbcType=INTEGER}
+    typelevel = #{typelevel,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAll" resultType="com.zz.ikeeping.entity.GoodsType">
+    select
+    <include refid="Base_Column_List" />
+    from t_goodstype
+  </select>
 </mapper>
+
