@@ -22,6 +22,7 @@
         <module>ikeeping_news</module>
         <module>ikeeping_sports</module>
         <module>ikeeping_transportation</module>
+        <module>ikeeping_sns</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -50,9 +51,9 @@
         <!-- Druid 数据库连接池版本    -->
         <druid.version>1.1.17</druid.version>
         <!-- ikeeping_common 版本 -->
-        <common.version>0.1</common.version>
+        <shop.version>0.1</shop.version>
         <!-- shop 版本 -->
-        <entity.version>0.1</entity.version>
+        <shop.version>0.1</shop.version>
         <!-- Feign 声明式REST客户端版本 -->
         <feign.version>2.1.1.RELEASE</feign.version>
         <!-- Jedis Redis的Java 客户端版本 -->
@@ -79,6 +80,8 @@
         <qiniu.version>[7.2.0, 7.2.99]</qiniu.version>
         <!-- 阿里云存储sdk版本 -->
         <oss.version>2.8.3</oss.version>
+        <fileupload.version>1.4</fileupload.version>
+        <io.version>2.6</io.version>
 
     </properties>
 
@@ -123,12 +126,12 @@
             <dependency>
                 <groupId>com.zz.ikeeping</groupId>
                 <artifactId>ikeeping_common</artifactId>
-                <version>${common.version}</version>
+                <version>${shop.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.zz.ikeeping</groupId>
                 <artifactId>ikeeping_entity</artifactId>
-                <version>${entity.version}</version>
+                <version>${shop.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -195,6 +198,18 @@
                 <groupId>org.elasticsearch.client</groupId>
                 <artifactId>transport</artifactId>
                 <version>${tranport.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${fileupload.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${io.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.qiniu</groupId>

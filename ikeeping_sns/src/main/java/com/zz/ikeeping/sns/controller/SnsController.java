@@ -1,6 +1,5 @@
 package com.zz.ikeeping.sns.controller;
 
-import com.zz.ikeeping.common.vo.JsonBean;
 import com.zz.ikeeping.enyity.Community;
 import com.zz.ikeeping.sns.service.SnsService;
 import org.springframework.beans.factory.annotation.Autowired;
