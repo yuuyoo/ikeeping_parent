@@ -22,7 +22,8 @@
         <module>ikeeping_sports</module>
         <module>ikeeping_transportation</module>
         <module>ikeeping_sns</module>
-        <module>ikeeping_serviceUser</module>
+        <module>ikeeping_serverUser</module>
+        <module>ikeeping_serverUser</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
