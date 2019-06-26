@@ -22,7 +22,6 @@
         <module>ikeeping_news</module>
         <module>ikeeping_sports</module>
         <module>ikeeping_transportation</module>
-        <module>ikeeping_sns</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -51,9 +50,9 @@
         <!-- Druid 数据库连接池版本    -->
         <druid.version>1.1.17</druid.version>
         <!-- ikeeping_common 版本 -->
-        <shop.version>0.1</shop.version>
+        <common.version>0.1</common.version>
         <!-- shop 版本 -->
-        <shop.version>0.1</shop.version>
+        <entity.version>0.1</entity.version>
         <!-- Feign 声明式REST客户端版本 -->
         <feign.version>2.1.1.RELEASE</feign.version>
         <!-- Jedis Redis的Java 客户端版本 -->
@@ -76,6 +75,10 @@
         <es.version>3.1.8.RELEASE</es.version>
         <!-- 连接elasticsearch集群的远程工具 -->
         <tranport.version>6.2.2</tranport.version>
+        <!-- 七牛云存储sdk版本 -->
+        <qiniu.version>[7.2.0, 7.2.99]</qiniu.version>
+        <!-- 阿里云存储sdk版本 -->
+        <oss.version>2.8.3</oss.version>
 
     </properties>
 
@@ -120,12 +123,12 @@
             <dependency>
                 <groupId>com.zz.ikeeping</groupId>
                 <artifactId>ikeeping_common</artifactId>
-                <version>${shop.version}</version>
+                <version>${common.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.zz.ikeeping</groupId>
                 <artifactId>ikeeping_entity</artifactId>
-                <version>${shop.version}</version>
+                <version>${entity.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -192,6 +195,16 @@
                 <groupId>org.elasticsearch.client</groupId>
                 <artifactId>transport</artifactId>
                 <version>${tranport.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qiniu</groupId>
+                <artifactId>qiniu-java-sdk</artifactId>
+                <version>${qiniu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${oss.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
