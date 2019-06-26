@@ -4,11 +4,16 @@ import lombok.Data;
 
 @Data
 public class User {
-    private int uid;
+    private Integer uid;
+
     private String uname;
+
     private String phone;
+
     private String password;
+
     private String imgurl;
-    private int flag;
+
+    private Integer flag;
 
 }
