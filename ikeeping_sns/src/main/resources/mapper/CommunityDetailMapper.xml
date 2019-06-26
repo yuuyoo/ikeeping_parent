@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.ikeeping.sns.daoo.Community_XQMapper">
+  <resultMap id="BaseResultMap" type="com.zz.ikeeping.enyity.CommunityDetail">
+    <id column="xqid" jdbcType="INTEGER" property="xqid" />
+    <result column="cmid" jdbcType="INTEGER" property="cmid" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="nrtime" jdbcType="TIMESTAMP" property="nrtime" />
+    <result column="gps" jdbcType="VARCHAR" property="gps" />
+    <result column="xqcontent" jdbcType="VARCHAR" property="xqcontent" />
+    <result column="xqimgurl" jdbcType="VARCHAR" property="xqimgurl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    xqid, cmid, uid, nrtime, gps, xqcontent, xqimgurl
+  </sql>
+
+</mapper>

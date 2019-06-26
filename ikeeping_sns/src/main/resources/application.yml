@@ -1,0 +1,20 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: UserProvider
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: anhaoyang
+    password: AnHaoYang142464!
+    url: jdbc:mysql://47.107.128.52:3306/ikeeping?serverTimezone=UTC&characterEncoding=UTF8
+    type: com.alibaba.druid.pool.DruidDataSource
+server:
+  port: 9701
+mybatis:
+  mapper-locations: classpath*:/mapper/*.xml
+
+
+
