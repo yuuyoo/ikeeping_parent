@@ -76,10 +76,12 @@
         <es.version>3.1.8.RELEASE</es.version>
         <!-- 连接elasticsearch集群的远程工具 -->
         <tranport.version>6.2.2</tranport.version>
-
+        <!-- 七牛云存储sdk版本 -->
+        <qiniu.version>[7.2.0, 7.2.99]</qiniu.version>
+        <!-- 阿里云存储sdk版本 -->
+        <oss.version>2.8.3</oss.version>
         <fileupload.version>1.4</fileupload.version>
         <io.version>2.6</io.version>
-        <oss.version>2.8.3</oss.version>
 
     </properties>
 
@@ -208,6 +210,11 @@
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>${io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qiniu</groupId>
+                <artifactId>qiniu-java-sdk</artifactId>
+                <version>${qiniu.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.aliyun.oss</groupId>
