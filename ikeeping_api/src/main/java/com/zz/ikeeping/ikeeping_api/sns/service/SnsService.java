@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @FeignClient(name = "UserProvider")
 public interface SnsService {
 
-    @GetMapping("sns/showTopicType.do")
-    JsonBean selectTopicType();
+    //@GetMapping("sns/showTopicType.do")
+    //JsonBean selectTopicType();
 }

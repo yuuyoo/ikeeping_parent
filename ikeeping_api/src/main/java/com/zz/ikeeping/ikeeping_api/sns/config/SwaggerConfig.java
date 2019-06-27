@@ -1,7 +1,6 @@
-package com.zz.ikeeping.ikeeping_api.config;
+package com.zz.ikeeping.ikeeping_api.sns.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -14,7 +13,7 @@ import springfox.documentation.spring.web.plugins.Docket;
  * @create 2019-06-24 21:58
  * @desc 统一API接口平台
  **/
-@Configuration
+//@Configuration
 public class SwaggerConfig {
     /**
      * 创建API的基本信息（这些基本信息会展示在文档页面中）

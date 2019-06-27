@@ -11,8 +11,8 @@ public class SnsController {
     @Autowired
     private SnsService snsService;
 
-    @GetMapping("api/sns/showTopicType.do")
-    public JsonBean selectTopicType() {
-        return snsService.selectTopicType();
-    }
+//    @GetMapping("api/sns/showTopicType.do")
+//    public JsonBean selectTopicType() {
+//        return snsService.selectTopicType();
+//    }
 }
