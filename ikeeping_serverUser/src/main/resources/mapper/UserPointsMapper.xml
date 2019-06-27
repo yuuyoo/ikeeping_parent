@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.ikeeping.server.user.dao.UserPointsMapper">
+  <resultMap id="BaseResultMap" type="com.zz.ikeeping.entity.UserPoint">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="totalscore" jdbcType="INTEGER" property="totalscore" />
+    <result column="currscore" jdbcType="INTEGER" property="currscore" />
+  </resultMap>
+  <insert id="insert" parameterType="com.zz.ikeeping.entity.UserPoint">
+    insert into t_userpoint (uid, totalscore, currscore)
+    values ( #{uid,jdbcType=INTEGER}, #{totalscore,jdbcType=INTEGER},
+      #{currscore,jdbcType=INTEGER})
+  </insert>
+
+  <update id="update">
+    update t_userpoint set totalscore=totalscore+#{score},currscore=currscore+#{score} where uid=#{uid}
+  </update>
+</mapper>

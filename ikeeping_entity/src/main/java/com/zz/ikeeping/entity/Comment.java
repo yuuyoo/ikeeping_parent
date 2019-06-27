@@ -4,17 +4,16 @@ import lombok.Data;
 
 @Data
 public class Comment {
-    private Integer rid;
+    private Integer id;
 
     private Integer ruid;
+
+    private Integer uid;
+
+    private Integer cmid;
 
     private String content;
 
     private String imgurl;
 
-    private Integer browercount;
-
-    private Integer transcount;
-
-    private Integer clickcount;
 }
