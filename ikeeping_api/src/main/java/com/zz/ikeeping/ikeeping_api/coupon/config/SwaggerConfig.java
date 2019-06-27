@@ -36,7 +36,7 @@ public class SwaggerConfig {
     @Bean//创建对象  修饰方法 方法的返回值必须是引用类型  对象存储在IOC容器
     public Docket createDocket(){
         Docket docket=new Docket(DocumentationType.SWAGGER_2).apiInfo(createA()).select().
-                apis(RequestHandlerSelectors.basePackage("com.zz.ikeeping.ikeeping_api.coupon.controller")).
+                apis(RequestHandlerSelectors.basePackage("com.zz.ikeeping.ikeeping_api.controller")).
                 build();
         return docket;
     }

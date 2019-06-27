@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.ikeeping.server.user.dao.UserSignDao">
+
+  <insert id="insert" parameterType="com.zz.ikeeping.entity.Sign" useGeneratedKeys="true" keyProperty="id">
+    insert into t_sign (uid, score,extrascore,createtime,days)
+    values (#{uid}, #{score},#{extrascore},now(),#{days})
+  </insert>
+  <select id="selectByUid" resultType="com.zz.ikeeping.entity.Sign">
+    select * from t_sign where uid=#{uid} order by createtime desc
+  </select>
+  <select id="selectByUidLast" resultType="com.zz.ikeeping.entity.Sign">
+    select * from t_sign where uid=#{uid} order by createtime desc limit 1
+  </select>
+  <select id="selectByUidDays" resultType="com.zz.ikeeping.entity.Sign">
+    select * from t_sign where uid=#{uid} and to_days(now())-to_days(createtime) &lt;= #{days};
+  </select>
+</mapper>

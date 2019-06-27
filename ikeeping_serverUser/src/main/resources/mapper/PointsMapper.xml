@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.ikeeping.server.user.dao.PointsMapper">
+  <resultMap id="BaseResultMap" type="com.zz.ikeeping.entity.Points">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="info" jdbcType="VARCHAR" property="info" />
+    <result column="startdate" jdbcType="DATE" property="startdate" />
+    <result column="enddate" jdbcType="DATE" property="enddate" />
+    <result column="flag" jdbcType="SMALLINT" property="flag" />
+  </resultMap>
+  <insert id="insert" parameterType="com.zz.ikeeping.entity.Points" useGeneratedKeys="true" keyProperty="id">
+    insert into t_points (uid, score,  info, startdate, enddate, flag)
+    values ( #{uid,jdbcType=INTEGER}, #{score,jdbcType=INTEGER},
+      #{info,jdbcType=VARCHAR}, #{startdate,jdbcType=DATE}, #{enddate,jdbcType=DATE},1)
+  </insert>
+
+</mapper>

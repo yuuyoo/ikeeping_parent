@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zz.ikeeping.sns.dao.CommentMapper">
-  <resultMap id="BaseResultMap" type="com.zz.ikeeping.enyity.Comment">
-    <id column="rid" jdbcType="INTEGER" property="rid" />
-    <result column="ruid" jdbcType="INTEGER" property="ruid" />
-    <result column="rcontent" jdbcType="VARCHAR" property="rcontent" />
-    <result column="rimgurl" jdbcType="VARCHAR" property="rimgurl" />
-    <result column="rnumber" jdbcType="INTEGER" property="rnumber" />
-    <result column="rcount" jdbcType="INTEGER" property="rcount" />
-    <result column="rzan" jdbcType="INTEGER" property="rzan" />
-  </resultMap>
+
   <sql id="Base_Column_List">
     rid, ruid, rcontent, rimgurl, rnumber, rcount, rzan
   </sql>
 
-  <select id="selectComment" resultType="com.zz.ikeeping.enyity.Comment">
-    SELECT u.imgurl, u.uname, cd.content, cd.imgurl deimg, cd.pubtime, cd.location FROM t_communitydetail cd
-    inner join t_user u
-    on cd.uid = u.uid;
+  <!--传入参数为话题发布人id, 发布话题详情编号
+      返回结果当前用户发布指定话题下所有评论，默认显示前三条-->
+  <select id="selectComment" parameterType="com.zz.ikeeping.sns.vo.VCommunityDetail" resultType="com.zz.ikeeping.sns.vo.VCommunityDetail">
+      SELECT cu.uname, cu.content FROM t_communitydetail cd inner join t_user u on u.uid = cd.uid
+      inner join
+      (SELECT c.ruid ,u.uname, c.content, c.uid, c.cmid FROM t_user u
+      inner join t_comment c
+      on u.uid = c.ruid) cu
+      on cu.uid = u.uid AND cu.cmid = cd.id
+      WHERE cd.uid = #{uid} and cd.id = #{id}
+      ORDER BY cd.id desc
+      LIMIT 3;
   </select>
+
 </mapper>
