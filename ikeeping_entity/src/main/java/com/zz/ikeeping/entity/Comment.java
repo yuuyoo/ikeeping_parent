@@ -1,4 +1,4 @@
-package com.zz.ikeeping.enyity;
+package com.zz.ikeeping.entity;
 
 import lombok.Data;
 

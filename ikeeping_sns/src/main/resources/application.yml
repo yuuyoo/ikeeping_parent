@@ -4,7 +4,7 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 spring:
   application:
-    name: UserProvider
+    name: CommentProvider
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: anhaoyang

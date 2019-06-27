@@ -1,6 +1,7 @@
 package com.zz.ikeeping.sns.dao;
 
-import com.zz.ikeeping.enyity.Community;
+
+import com.zz.ikeeping.entity.Community;
 
 import java.util.List;
 
