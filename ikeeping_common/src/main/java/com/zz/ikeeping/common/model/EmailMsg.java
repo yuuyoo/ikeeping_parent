@@ -1,5 +1,6 @@
 package com.zz.ikeeping.common.model;
 
+
 public class EmailMsg {
     public String getTitle() {
         return title;

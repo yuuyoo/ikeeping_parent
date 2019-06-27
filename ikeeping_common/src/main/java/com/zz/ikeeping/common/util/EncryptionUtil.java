@@ -2,6 +2,7 @@ package com.zz.ikeeping.common.util;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.*;
@@ -10,9 +11,9 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
 import java.util.Map;
 
-/*
-* 加密算法
-* */
+/**
+ * 实现主流的加解密算法
+ */
 public class EncryptionUtil {
     public static final String SHA1="SHA-1";
     public static final String SHA256="SHA-256";

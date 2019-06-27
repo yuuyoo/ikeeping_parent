@@ -1,0 +1,7 @@
+server:
+  port: 9804
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB #单个文件最大限制
+      max-request-size: 100MB #单个请求最大限制

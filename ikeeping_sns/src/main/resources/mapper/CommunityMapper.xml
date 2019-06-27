@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zz.ikeeping.sns.dao.CommunityMapper">
-  <resultMap id="BaseResultMap" type="com.zz.ikeeping.enyity.Community">
-    <id column="cmid" jdbcType="INTEGER" property="cmid" />
-    <result column="cmname" jdbcType="VARCHAR" property="cmname" />
-    <result column="cmimgurl" jdbcType="VARCHAR" property="cmimgurl" />
-    <result column="cmtime" jdbcType="TIMESTAMP" property="cmtime" />
-  </resultMap>
+
   <sql id="Base_Column_List">
     cmid, cmname, cmimgurl, cmtime
   </sql>
-  <select id="showTopicType" resultType="com.zz.ikeeping.enyity.Community">
+
+  <select id="showTopicType" resultType="com.zz.ikeeping.entity.Community">
       select * from t_community;
   </select>
 </mapper>

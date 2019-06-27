@@ -20,7 +20,6 @@
         <dependency>
             <groupId>com.zz.ikeeping</groupId>
             <artifactId>ikeeping_common</artifactId>
-            <version>${shop.version}</version>
         </dependency>
 
         <dependency>

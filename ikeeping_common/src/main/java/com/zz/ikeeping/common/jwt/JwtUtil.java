@@ -1,5 +1,6 @@
 package com.zz.ikeeping.common.jwt;
 
+
 import com.zz.ikeeping.common.config.ProjectConfig;
 import com.zz.ikeeping.common.util.TimeUtil;
 import io.jsonwebtoken.Claims;
@@ -11,6 +12,11 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Date;
 
+/**
+ *@Author feri
+ *@Date Created in 2019/6/14 10:10
+ * 基于JWT 进行封装处理
+ */
 public class JwtUtil {
     /**
      * 基于JWT,生成令牌
