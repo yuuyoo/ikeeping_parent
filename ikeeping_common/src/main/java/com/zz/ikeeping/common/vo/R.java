@@ -2,6 +2,11 @@ package com.zz.ikeeping.common.vo;
 
 import lombok.Data;
 
+/**
+ * @author DJL
+ * @create 2019-06-26 22:26
+ * @desc 返回对象
+ **/
 @Data
 public class R {
     private int code;
@@ -15,13 +20,16 @@ public class R {
         r.setData(null);
         return r;
     }
-    public static R setOK(Object data){
+
+    public static R setOK(String msg){
         R r=new R();
         r.setCode(1);
-        r.setMsg("OK");
-        r.setData(data);
+        r.setMsg(msg);
+        r.setData(null);
         return r;
-    }    public static R setOK(String msg,Object data){
+    }
+
+    public static R setOK(String msg,Object data){
         R r=new R();
         r.setCode(1);
         r.setMsg(msg);
@@ -30,14 +38,14 @@ public class R {
     }
     public static R setERROR(){
         R r=new R();
-        r.setCode(1000);
+        r.setCode(0);
         r.setMsg("ERROR");
         r.setData(null);
         return r;
     }
     public static R setERROR(String msg){
         R r=new R();
-        r.setCode(1000);
+        r.setCode(0);
         r.setMsg(msg);
         r.setData(null);
         return r;
