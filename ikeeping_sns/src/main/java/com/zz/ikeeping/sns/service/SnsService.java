@@ -13,6 +13,6 @@ public interface SnsService {
 
     Map<String, Object> showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id);
 
-
+    int commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id);
 
 }
