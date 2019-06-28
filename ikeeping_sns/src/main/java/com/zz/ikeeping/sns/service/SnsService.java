@@ -15,7 +15,7 @@ public interface SnsService {
 
     Map<String, Object> showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id);
 
-    Map<String, Object> addCommont(@RequestParam("uid") int uid, @RequestParam("id") int id);
+    Map<String, Object> addCommont(Comment comment);
 
     int commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id);
 
