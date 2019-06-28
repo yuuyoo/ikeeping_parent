@@ -15,6 +15,7 @@ public interface CommentMapper {
 
     //新增评论、回复评论
     int add(Comment comment);
+
     //展示所有评论
     List<Comment> all();
 }

@@ -20,5 +20,6 @@ public interface SnsService {
     @GetMapping("sns/commentCount.do")
     R commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id);
 
-
+    @GetMapping("sns/allCommont.do")
+    R allCommont();
 }
