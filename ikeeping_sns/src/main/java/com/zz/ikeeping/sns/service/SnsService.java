@@ -15,7 +15,6 @@ public interface SnsService {
 
     List<VCommunityDetail> showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id);
 
-
     int commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id);
 
     int topicPraise(@RequestParam("uid") int uid, @RequestParam("id") int id);

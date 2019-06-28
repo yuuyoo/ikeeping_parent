@@ -18,13 +18,13 @@ import java.util.Map;
 @Service
 public class SnsServiceImpl implements SnsService {
 
-    @Autowired(required = false)
+    @Autowired
     private CommunityMapper communityMapper;
 
-    @Autowired(required = false)
+    @Autowired
     private CommunityDetailMapper communityDetailMapper;
 
-    @Autowired(required = false)
+    @Autowired
     private CommentMapper commentMapper;
 
     //页面顶端展示话题类型
@@ -52,6 +52,16 @@ public class SnsServiceImpl implements SnsService {
     }
 
     //展示xx用户发表的xx话题下的评论数量
+    @Override
+    public Map<String, Object> addCommont(@RequestParam("uid") int uid, @RequestParam("id") int id) {
+        return null;
+    }
+
+    @Override
+    public List<Comment> allCommont() {
+        return commentMapper.all();
+    }
+
     @Override
     public int commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id) {
         List<VCommunityDetail> list = showTopicComment(uid, id);
