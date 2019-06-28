@@ -1,6 +1,18 @@
 package com.zz.ikeeping.common.config;
 
 public class ProjectConfig {
+
+
+    //初始积分 -新用户
+    public static final int INITNEWSCORE=50;
+    public static final int INITNEWSEXPIRE=30; //有效期 新增
+    public static final int NEWSEXPIRE=365; //有效期 签到
+
+    public static final int NEWSCORE=30;//第一次签到送30积分
+    //购物车上限  商品个数
+    public static final int CARTMAXGOODS=200;
+
+
     //Redis信息
     public static final String REDISHOST="39.105.189.141";
     public static final int REDISPORT=6380;
