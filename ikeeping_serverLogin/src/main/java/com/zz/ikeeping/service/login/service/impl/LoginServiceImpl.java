@@ -1,20 +1,15 @@
 package com.zz.ikeeping.service.login.service.impl;
 
 import com.alibaba.fastjson.JSON;
-
 import com.zz.ikeeping.common.config.ProjectConfig;
 import com.zz.ikeeping.common.jwt.JwtUtil;
 import com.zz.ikeeping.common.model.LoginToken;
 import com.zz.ikeeping.common.util.EncryptionUtil;
 import com.zz.ikeeping.common.util.IdGenerator;
-
-
 import com.zz.ikeeping.common.util.JedisUtil;
 import com.zz.ikeeping.common.vo.R;
 import com.zz.ikeeping.entity.User;
-import com.zz.ikeeping.common.config.ProjectConfig;
 import com.zz.ikeeping.service.login.dao.UserDao;
-import com.zz.ikeeping.service.login.dao.UserLogDao;
 import com.zz.ikeeping.service.login.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,20 +60,19 @@ public class LoginServiceImpl implements LoginService {
                     jedisUtil.setex(ProjectConfig.TOKENJWT+token,1800,JSON.toJSONString(user));
                     //3、Zset 记录每个手机号下的所有的Token  score:phone   value:令牌
                     //5、将Token
-
                     String s = simpleDateFormat.format(new Date());
                     jedisUtil.lpush(com.zz.ikeeping.service.login.common.ProjectConfig.LOGINLOG+user.getPhone(),user.getUid().toString(),"1",s,"登录成功，令牌生成");
-                   // logDao.save(user.getUid(),"登录成功，令牌生成");
+                    //logDao.save(user.getUid(),"登录成功，令牌生成");
                     r= R.setOK("OK",token);
                 }else {
                     String s1 = simpleDateFormat.format(new Date());
-                    jedisUtil.lpush(com.zz.ikeeping.service.login.common.ProjectConfig.LOGINLOG+user.getPhone(),user.getUid().toString(),"2",s1,"登录失败，密码有误");
+                    jedisUtil.lpush(com.zz.ikeeping.service.login.common.ProjectConfig.LOGINLOG+user.getPhone(),user.getUid().toString(),"2",s1,"登录失败，密码不正确");
                     //logDao.save(user.getUid(),"登录失败，密码有误");
                     r= R.setERROR("密码不正确");
                 }
             }else {
-                String s2 = simpleDateFormat.format(new Date());
-                jedisUtil.lpush(com.zz.ikeeping.service.login.common.ProjectConfig.LOGINLOG+user.getPhone(),user.getUid().toString(),"3",s2,"登录失败，账号有误");
+                String s3 = simpleDateFormat.format(new Date());
+                jedisUtil.lpush(com.zz.ikeeping.service.login.common.ProjectConfig.LOGINLOG+user.getPhone(),user.getUid().toString(),"3",s3,"登录失败，账号有误");
                 //logDao.save(user.getUid(),"登录失败，账号有误");
                 r= R.setERROR("是不是还没账号，快来注册");
             }
@@ -87,8 +81,8 @@ public class LoginServiceImpl implements LoginService {
                 jedisUtil.setex(key+"_"+System.currentTimeMillis(),600,"1");
                 Set<String> set=jedisUtil.keys(key+"*");
                 if(set.size()==3){
-                    String s3 = simpleDateFormat.format(new Date());
-                    jedisUtil.lpush(com.zz.ikeeping.service.login.common.ProjectConfig.LOGINLOG+user.getPhone(),user.getUid().toString(),"4",s3,"登录失败超过三次，账号锁定");
+                    String s4 = simpleDateFormat.format(new Date());
+                    jedisUtil.lpush(com.zz.ikeeping.service.login.common.ProjectConfig.LOGINLOG+user.getPhone(),user.getUid().toString(),"4",s4,"登录失败超过三次，账号被锁定");
                     //logDao.save(user.getUid(),"登录失败超过3次，账号被锁定");
                     //将当前账号冻结 1小时
                     jedisUtil.setex(ProjectConfig.USERSD+phone,3600,"10分钟连续失败三次冻结账号");

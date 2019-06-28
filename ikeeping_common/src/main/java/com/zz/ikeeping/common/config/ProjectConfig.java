@@ -29,12 +29,12 @@ public class ProjectConfig {
     public static final String EMAILPASS="java168";
     public static final String EMAILHOST="smtp.163.com";
 
-    public static Map<Integer,String> projects;
-    static {
-        projects=new HashMap<>();
-        projects.put(10001,"ikeeping");
-
-    }
+//    public static Map<Integer,String> projects;
+//    static {
+//        projects=new HashMap<>();
+//        projects.put(10001,"ikeeping");
+//
+//    }
     //激活地址
     public static final String ACTIVEURL="";
     public static final String AESKEYACTIVECODE="Sr766D1d0ir+q61J2ho7rQ==";

@@ -18,13 +18,13 @@ import java.util.Map;
 @Service
 public class SnsServiceImpl implements SnsService {
 
-    @Autowired(required = false)
+    @Autowired
     private CommunityMapper communityMapper;
 
-    @Autowired(required = false)
+    @Autowired
     private CommunityDetailMapper communityDetailMapper;
 
-    @Autowired(required = false)
+    @Autowired
     private CommentMapper commentMapper;
 
     @Override
@@ -47,6 +47,16 @@ public class SnsServiceImpl implements SnsService {
         map.put("detail", detailList);
 
         return map;
+    }
+
+    @Override
+    public Map<String, Object> addCommont(@RequestParam("uid") int uid, @RequestParam("id") int id) {
+        return null;
+    }
+
+    @Override
+    public List<Comment> allCommont() {
+        return commentMapper.all();
     }
 
     @Override
