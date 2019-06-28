@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CommunityDetailMapper {
     List<VCommunityDetail> selectDetail();
+
+
 }

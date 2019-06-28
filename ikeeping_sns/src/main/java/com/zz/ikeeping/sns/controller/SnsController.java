@@ -28,4 +28,10 @@ public class SnsController {
         Map<String, Object> map = snsService.showTopicComment(uid, id);
         return R.setOK("Ok", map);
     }
+
+    @GetMapping("sns/commentCount.do")
+    public R commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id) {
+        int count = snsService.commentCount(uid, id);
+        return R.setOK("OK",count);
+    }
 }
