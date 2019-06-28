@@ -1,6 +1,5 @@
 package com.zz.ikeeping.sns.service.impl;
 
-import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.Community;
 import com.zz.ikeeping.sns.dao.CommentMapper;
 import com.zz.ikeeping.sns.dao.CommunityDetailMapper;
@@ -58,5 +57,12 @@ public class SnsServiceImpl implements SnsService {
     @Override
     public List<Comment> allCommont() {
         return commentMapper.all();
+    }
+
+    @Override
+    public int commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id) {
+        Map<String, Object> map = showTopicComment(uid, id);
+        List<VCommunityDetail> list = (List<VCommunityDetail>) map.get("comment");
+        return list.size();
     }
 }

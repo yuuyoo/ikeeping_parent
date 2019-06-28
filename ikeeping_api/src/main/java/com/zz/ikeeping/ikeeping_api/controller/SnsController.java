@@ -25,7 +25,12 @@ public class SnsController {
     }
 
     @GetMapping("api/sns/allCommont.do")
-    public R allCommont(){
+    public R allCommont() {
         return snsService.allCommont();
+    }
+
+    @GetMapping("api/sns/commentCount.do")
+    public R commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id) {
+        return snsService.commentCount(uid, id);
     }
 }

@@ -1,7 +1,12 @@
 package com.zz.ikeeping.server.shop.dao;
 
 import com.zz.ikeeping.entity.Goods;
+import com.zz.ikeeping.server.shop.dto.GoodsDTO;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface GoodsMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +19,7 @@ public interface GoodsMapper {
     int updateByPrimaryKeySelective(Goods record);
 
     int updateByPrimaryKey(Goods record);
+
+    List<GoodsDTO> selectByTypeid(Integer typeid);
+
 }
