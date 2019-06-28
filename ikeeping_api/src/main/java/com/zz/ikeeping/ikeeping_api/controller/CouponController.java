@@ -1,14 +1,14 @@
-package com.zz.ikeeping.ikeeping_api.coupon.controller;
+package com.zz.ikeeping.ikeeping_api.controller;
 import com.zz.ikeeping.common.vo.R;
 import com.zz.ikeeping.entity.Coupon;
-import com.zz.ikeeping.ikeeping_api.coupon.service.UserService;
+import com.zz.ikeeping.ikeeping_api.service.CouponService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class UserController {
+public class CouponController {
     @Autowired
-    private UserService userService;
+    private CouponService userService;
     @PostMapping("user/coupon/save.do")
     public R save(@RequestBody Coupon coupon){
         return userService.save(coupon);
