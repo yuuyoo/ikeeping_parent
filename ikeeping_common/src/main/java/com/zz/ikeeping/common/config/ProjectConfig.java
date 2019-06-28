@@ -1,11 +1,15 @@
 package com.zz.ikeeping.common.config;
 
 public class ProjectConfig {
+
+
+    public static final int NEWSEXPIRE=365;
     //Redis信息
     public static final String REDISHOST="39.105.189.141";
     public static final int REDISPORT=6380;
     public static final String REDISPASS="qfjava";
 
+    public static final int NEWSCORE=30;//第一次签到送30积分
     //Redis常用的key的设置
     public static final String SMSPRELIMIT="smspre:";//记录手机号一分钟只能发一次 smspre:180515990152 key
     public static final String SMSPREDAY="smsday:";//记录手机号一天只能发20条 smsday:18515990152
@@ -21,13 +25,10 @@ public class ProjectConfig {
 
 
     //短信配置
-    public static final String SMSKEY="97245bbce1178f6b82233a8c631e4c76";
-    public static final String SMSTEMPID="164065";
+    public static final String SMSKEY="2ea33e65908eea210dd73d54b0f25b66";
+    public static final String SMSTEMPID="168551";
 
-    //邮箱相关配置
-    public static final String EMAIL="lx_teach@163.com";
-    public static final String EMAILPASS="java168";
-    public static final String EMAILHOST="smtp.163.com";
+
 
 //    public static Map<Integer,String> projects;
 //    static {
