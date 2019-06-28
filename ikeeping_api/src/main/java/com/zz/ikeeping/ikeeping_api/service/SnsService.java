@@ -17,9 +17,6 @@ public interface SnsService {
     @GetMapping("sns/showTopicComment.do")
     R showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id);
 
-    @GetMapping("sns/allCommont.do")
-    R allCommont();
-
     @GetMapping("sns/commentCount.do")
     R commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id);
 

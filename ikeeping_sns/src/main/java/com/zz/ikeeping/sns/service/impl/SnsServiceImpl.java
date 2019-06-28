@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 
 @Service
 public class SnsServiceImpl implements SnsService {
@@ -52,16 +49,6 @@ public class SnsServiceImpl implements SnsService {
     }
 
     //展示xx用户发表的xx话题下的评论数量
-    @Override
-    public Map<String, Object> addCommont(@RequestParam("uid") int uid, @RequestParam("id") int id) {
-        return null;
-    }
-
-    @Override
-    public List<Comment> allCommont() {
-        return commentMapper.all();
-    }
-
     @Override
     public int commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id) {
         List<VCommunityDetail> list = showTopicComment(uid, id);
