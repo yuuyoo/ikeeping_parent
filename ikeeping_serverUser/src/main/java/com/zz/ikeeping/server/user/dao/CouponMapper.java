@@ -1,8 +1,5 @@
-package com.zz.ikeeping.userserver.coupon.dao;
-
-import com.zz.ikeeping.common.vo.R;
+package com.zz.ikeeping.server.user.dao;
 import com.zz.ikeeping.entity.Coupon;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 

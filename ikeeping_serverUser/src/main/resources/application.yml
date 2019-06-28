@@ -12,6 +12,6 @@ spring:
     url: jdbc:mysql://localhost:3306/db_ljb?serverTimezone=UTC&characterEncoding=UTF8
     type: com.alibaba.druid.pool.DruidDataSource
 server:
-  port: 9401
+  port: 9402
 mybatis:
   mapper-locations: classpath*:/mapper/*.xml

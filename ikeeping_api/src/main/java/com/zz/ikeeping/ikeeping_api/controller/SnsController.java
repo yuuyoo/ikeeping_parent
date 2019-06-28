@@ -19,14 +19,14 @@ public class SnsController {
         return snsService.selectTopicType();
     }
 
+    @GetMapping("api/sns/selectDetail.do")
+    public R selectDetail() {
+        return snsService.selectDetail();
+    }
+
     @GetMapping("api/sns/showTopicComment.do")
     public R showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id) {
         return snsService.showTopicComment(uid, id);
-    }
-
-    @GetMapping("api/sns/allCommont.do")
-    public R allCommont() {
-        return snsService.allCommont();
     }
 
     @GetMapping("api/sns/commentCount.do")

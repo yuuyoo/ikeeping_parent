@@ -1,4 +1,4 @@
-package com.zz.ikeeping.ikeeping_api.coupon.config;
+package com.zz.ikeeping.ikeeping_api.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -10,14 +10,16 @@ import java.util.List;
 import java.util.Map;
 
 public interface SnsService {
-
     List<Community> showTopicType();
 
-    Map<String, Object> showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id);
+    List<VCommunityDetail> selectDetail();
+
+    List<VCommunityDetail> showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id);
 
     Map<String, Object> addCommont(Comment comment);
 
     int commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id);
 
-    List<Comment> allCommont();
+    int topicPraise(@RequestParam("uid") int uid, @RequestParam("id") int id);
+
 }

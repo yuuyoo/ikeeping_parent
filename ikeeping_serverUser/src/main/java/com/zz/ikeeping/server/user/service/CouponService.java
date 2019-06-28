@@ -1,9 +1,9 @@
-package com.zz.ikeeping.userserver.coupon.service;
+package com.zz.ikeeping.server.user.service;
 
 import com.zz.ikeeping.common.vo.R;
 import com.zz.ikeeping.entity.Coupon;
 
-public interface UserService {
+public interface CouponService {
     R save(Coupon coupon);
     R findAll();
 }
