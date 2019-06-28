@@ -11,9 +11,14 @@ public interface SnsService {
     @GetMapping("sns/showTopicType.do")
     R selectTopicType();
 
+    @GetMapping("sns/selectDetail.do")
+    R selectDetail();
+
     @GetMapping("sns/showTopicComment.do")
     R showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id);
 
     @GetMapping("sns/commentCount.do")
     R commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id);
+
+
 }

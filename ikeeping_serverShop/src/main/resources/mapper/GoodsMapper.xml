@@ -10,6 +10,14 @@
     <result column="goodstype" jdbcType="INTEGER" property="goodstype" />
     <result column="goodscount" jdbcType="INTEGER" property="goodscount" />
   </resultMap>
+  <resultMap id="goodsDTOMap" type="com.zz.ikeeping.server.shop.dto.GoodsDTO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="imgurl" jdbcType="VARCHAR" property="imgurl" />
+    <result column="goodstype" jdbcType="INTEGER" property="goodstype" />
+    <result column="sellcount" jdbcType="INTEGER" property="sellcount" />
+  </resultMap>
   <sql id="Base_Column_List">
     id, name, price, flag, imgurl, goodstype, goodscount
   </sql>
@@ -114,4 +122,18 @@
       goodscount = #{goodscount,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByTypeid" parameterType="int" resultMap="goodsDTOMap">
+  select id,name,price,imgurl,goodstype,sum(goodscount) sellcount
+  from
+      (select g.id, g.name, g.price, g.imgurl, g.goodstype,od.goodscount,o.status
+      from t_goods g
+      inner join t_orderdetail od
+      on g.id = od.gid
+      inner join t_order o
+      on o.id = od.oid
+      where goodstype=#{goodstype}
+      and o.status >=2) dto
+  group by id;
+  </select>
 </mapper>
