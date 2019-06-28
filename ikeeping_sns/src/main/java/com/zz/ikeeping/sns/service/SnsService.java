@@ -11,8 +11,13 @@ import java.util.Map;
 public interface SnsService {
     List<Community> showTopicType();
 
-    Map<String, Object> showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id);
+    List<VCommunityDetail> selectDetail();
+
+    List<VCommunityDetail> showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id);
+
 
     int commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id);
+
+    int topicPraise(@RequestParam("uid") int uid, @RequestParam("id") int id);
 
 }
