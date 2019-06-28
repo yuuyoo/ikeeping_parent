@@ -20,5 +20,11 @@
       LIMIT 3;
   </select>
 
+    <insert id="insertComment" parameterType="com.zz.ikeeping.entity.Comment">
+        insert into t_comment(ruid,uid,cmid,content) values(#{ruid},#{uid},#{cmid},#{content});
+    </insert>
 
+    <select id="all" resultType="com.zz.ikeeping.entity.Comment">
+        select * from t_comment;
+    </select>
 </mapper>
