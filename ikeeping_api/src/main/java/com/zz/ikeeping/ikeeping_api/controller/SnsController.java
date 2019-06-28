@@ -24,4 +24,8 @@ public class SnsController {
         return snsService.showTopicComment(uid, id);
     }
 
+    @GetMapping("api/sns/allCommont.do")
+    public R allCommont(){
+        return snsService.allCommont();
+    }
 }
