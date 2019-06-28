@@ -18,5 +18,10 @@ public class GoodsController {
         return goodsService.getGoodsPageByType(typeid, page, count);
     }
 
+    @GetMapping("/goods/detail")
+    public R detail(@RequestParam("gid") Integer gid){
+        return goodsService.getById(gid);
+    }
+
 
 }

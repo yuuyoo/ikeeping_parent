@@ -22,6 +22,11 @@ public class GoodsServiceImpl implements GoodsService {
         PageHelper.startPage(page, count);
         List<GoodsDTO> goodsList = goodsDao.selectByTypeid(typeid);
         PageInfo<GoodsDTO> pageInfo = new PageInfo<>(goodsList);
-        return R.setOK(pageInfo);
+        return R.setOK("ok", pageInfo);
+    }
+
+    @Override
+    public R getById(Integer gid) {
+        return R.setOK("ok", goodsDao.selectByPrimaryKey(gid));
     }
 }

@@ -14,6 +14,6 @@ public class GoodsTypeServiceImpl implements GoodsTypeService {
 
     @Override
     public R selectAll() {
-        return R.setOK(goodsTypeDao.selectAll());
+        return R.setOK("ok",goodsTypeDao.selectAll());
     }
 }
