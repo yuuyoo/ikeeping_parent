@@ -1,10 +1,11 @@
 package com.zz.ikeeping.sns.dao;
 
-
-import com.zz.ikeeping.enyity.CommunityDetail;
+import com.zz.ikeeping.sns.vo.VCommunityDetail;
 
 import java.util.List;
 
 public interface CommunityDetailMapper {
-    List<CommunityDetail> selectDetail();
+    List<VCommunityDetail> selectDetail();
+
+
 }
