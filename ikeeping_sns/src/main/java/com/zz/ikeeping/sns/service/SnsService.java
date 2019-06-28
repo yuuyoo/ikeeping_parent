@@ -22,4 +22,5 @@ public interface SnsService {
 
     int topicPraise(@RequestParam("uid") int uid, @RequestParam("id") int id);
 
+    List<Comment> allCommont();
 }

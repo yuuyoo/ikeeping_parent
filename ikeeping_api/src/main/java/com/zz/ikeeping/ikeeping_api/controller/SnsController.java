@@ -33,4 +33,9 @@ public class SnsController {
     public R commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id) {
         return snsService.commentCount(uid, id);
     }
+
+    @GetMapping({"api/sns/allCommont.do"})
+    public R allCommont() {
+        return this.snsService.allCommont();
+    }
 }

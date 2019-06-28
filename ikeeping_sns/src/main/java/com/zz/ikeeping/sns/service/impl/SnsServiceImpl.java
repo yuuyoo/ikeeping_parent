@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class SnsServiceImpl implements SnsService {
@@ -47,30 +49,20 @@ public class SnsServiceImpl implements SnsService {
 
         List<VCommunityDetail> commentList = commentMapper.selectComment(vCommunityDetail);
         return commentList;
-        List<VCommunityDetail> detailList = communityDetailMapper.selectDetail();
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("comment", commentList);
-        map.put("detail", detailList);
-
-        return map;
     }
 
     @Override
     public Map<String, Object> addCommont(Comment comment) {
-        Comment comment1 = new Comment();
-
-        comment1
         return null;
     }
 
-    //展示xx用户发表的xx话题下的评论数量
 
     @Override
     public List<Comment> allCommont() {
         return commentMapper.all();
     }
 
+    //展示xx用户发表的xx话题下的评论数量
     @Override
     public int commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id) {
         List<VCommunityDetail> list = showTopicComment(uid, id);

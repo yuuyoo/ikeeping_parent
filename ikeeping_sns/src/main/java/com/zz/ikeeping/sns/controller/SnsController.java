@@ -42,4 +42,10 @@ public class SnsController {
         int count = snsService.commentCount(uid, id);
         return R.setOK("OK",count);
     }
+
+    @GetMapping("sns/allCommont.do")
+    public R allCommont(){
+        List<Comment> list = snsService.allCommont();
+        return R.setOK("OK", list);
+    }
 }
