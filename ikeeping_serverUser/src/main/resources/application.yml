@@ -9,7 +9,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: anhaoyang
     password: AnHaoYang142464!
-    url: jdbc:mysql://localhost:3306/db_ljb?serverTimezone=UTC&characterEncoding=UTF8
+    url: jdbc:mysql://47.107.128.52:3306/ikeeping?serverTimezone=UTC&characterEncoding=UTF8
     type: com.alibaba.druid.pool.DruidDataSource
 server:
   port: 9402
