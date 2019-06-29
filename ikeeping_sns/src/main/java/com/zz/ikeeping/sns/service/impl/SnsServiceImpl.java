@@ -1,5 +1,6 @@
 package com.zz.ikeeping.sns.service.impl;
 
+import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.Community;
 import com.zz.ikeeping.sns.dao.CommentMapper;
 import com.zz.ikeeping.sns.dao.CommunityDetailMapper;
@@ -8,6 +9,7 @@ import com.zz.ikeeping.sns.service.SnsService;
 import com.zz.ikeeping.sns.vo.VCommunityDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -59,5 +61,23 @@ public class SnsServiceImpl implements SnsService {
     @Override
     public int topicPraise(int uid, int id) {
         return 0;
+    }
+
+    // 查看所有评论
+    @Override
+    public List<Comment> allCommont() {
+        return commentMapper.all();
+    }
+
+    // 新增评论
+    @Override
+    public int addCommont(Comment comment) {
+        return commentMapper.addCommont(comment);
+    }
+
+    // 回复评论
+    @Override
+    public void replyCommont(Comment comment) {
+        commentMapper.replyCommont(comment);
     }
 }

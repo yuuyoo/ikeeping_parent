@@ -6,9 +6,7 @@ import com.zz.ikeeping.entity.Community;
 import com.zz.ikeeping.sns.service.SnsService;
 import com.zz.ikeeping.sns.vo.VCommunityDetail;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -41,5 +39,22 @@ public class SnsController {
     public R commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id) {
         int count = snsService.commentCount(uid, id);
         return R.setOK("OK",count);
+    }
+
+    @GetMapping("sns/allCommont.do")
+    public R allCommont(){
+        List<Comment> list = snsService.allCommont();
+        return R.setOK("OK", list);
+    }
+
+    @PostMapping("sns/addCommont.do")
+    public R addCommont(@RequestBody Comment comment) {
+        int i  = snsService.addCommont(comment);
+        return R.setOK("OK", i);
+    }
+
+    @PostMapping("sns/replyCommont.do")
+    public void replyCommont(@RequestBody Comment comment) {
+        snsService.replyCommont(comment);
     }
 }
