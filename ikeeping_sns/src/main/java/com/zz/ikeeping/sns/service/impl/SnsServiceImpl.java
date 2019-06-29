@@ -1,5 +1,6 @@
 package com.zz.ikeeping.sns.service.impl;
 
+import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.Community;
 import com.zz.ikeeping.sns.dao.CommentMapper;
 import com.zz.ikeeping.sns.dao.CommunityDetailMapper;
@@ -8,12 +9,10 @@ import com.zz.ikeeping.sns.service.SnsService;
 import com.zz.ikeeping.sns.vo.VCommunityDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 
 @Service
 public class SnsServiceImpl implements SnsService {
@@ -27,42 +26,58 @@ public class SnsServiceImpl implements SnsService {
     @Autowired
     private CommentMapper commentMapper;
 
+    //页面顶端展示话题类型
     @Override
     public List<Community> showTopicType() {
         return communityMapper.showTopicType();
     }
 
+    //展示所有已发表的话题
     @Override
-    public Map<String, Object> showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id) {
-        VCommunityDetail vCommunityDetail = new VCommunityDetail();
-
-        vCommunityDetail.setUid(uid);
-        vCommunityDetail.setId(id);
-
-        List<VCommunityDetail> commentList = commentMapper.selectComment(vCommunityDetail);
-        List<VCommunityDetail> detailList = communityDetailMapper.selectDetail();
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("comment", commentList);
-        map.put("detail", detailList);
-
-        return map;
+    public List<VCommunityDetail> selectDetail() {
+        return communityDetailMapper.selectDetail();
     }
 
+    //展示xx话题下的前3条评论
     @Override
-    public Map<String, Object> addCommont(@RequestParam("uid") int uid, @RequestParam("id") int id) {
-        return null;
+    public List<VCommunityDetail> showTopicComment(int id) {
+        return commentMapper.selectComment(id);
     }
 
+    //展示xx话题下的评论数量
+    @Override
+    public int commentCount(int id) {
+        List<VCommunityDetail> list = showTopicComment(id);
+        return list.size();
+    }
+
+    //展示xx话题的点赞数量
+    @Override
+    public int topicPraise(int id) {
+        return 0;
+    }
+
+    //xx话题类型下最新发表的话题
+    @Override
+    public List<VCommunityDetail> newPublishTopicDetail(int cmid) {
+        return communityDetailMapper.newPublishTopicDetail(cmid);
+    }
+
+    // 查看所有评论
     @Override
     public List<Comment> allCommont() {
         return commentMapper.all();
     }
 
+    // 新增评论
     @Override
-    public int commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id) {
-        Map<String, Object> map = showTopicComment(uid, id);
-        List<VCommunityDetail> list = (List<VCommunityDetail>) map.get("comment");
-        return list.size();
+    public int addCommont(Comment comment) {
+        return commentMapper.addCommont(comment);
+    }
+
+    // 回复评论
+    @Override
+    public void replyCommont(Comment comment) {
+        commentMapper.replyCommont(comment);
     }
 }

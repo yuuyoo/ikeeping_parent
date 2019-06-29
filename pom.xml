@@ -18,11 +18,7 @@
         <module>ikeeping_sns</module>
         <module>ikeeping_news</module>
         <module>ikeeping_sports</module>
-        <module>ikeeping_news</module>
-        <module>ikeeping_sports</module>
         <module>ikeeping_transportation</module>
-        <module>ikeeping_sns</module>
-        <module>ikeeping_serverUser</module>
         <module>ikeeping_serverUser</module>
     </modules>
     <parent>
@@ -87,6 +83,8 @@
         <jdom.version>1.1</jdom.version>
         <!-- google二维码生成工具 -->
         <zxing.version>3.3.2</zxing.version>
+        <!-- 支付宝支付sdk -->
+        <alipay.version>3.7.26.ALL</alipay.version>
     </properties>
 
     <!-- 版本限定 -->
@@ -236,7 +234,11 @@
                 <artifactId>javase</artifactId>
                 <version>${zxing.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.alipay.sdk</groupId>
+                <artifactId>alipay-sdk-java</artifactId>
+                <version>${alipay.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

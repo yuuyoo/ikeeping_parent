@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.ikeeping.news.dao.NewsMapper">
+  <resultMap id="BaseResultMap" type="com.zz.ikeeping.entity.News">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="newstype" jdbcType="VARCHAR" property="newstype" />
+    <result column="imgurl" jdbcType="VARCHAR" property="imgurl" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="pubtime" jdbcType="DATE" property="pubtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, newstype, imgurl, content, pubtime
+  </sql>
+  <select id="selectAll"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_news
+  </select>
+
+  <insert id="insert" parameterType="com.zz.ikeeping.entity.News">
+    insert into t_news (newstype, imgurl,
+      content, pubtime)
+    values (#{newstype,jdbcType=VARCHAR}, #{imgurl,jdbcType=VARCHAR},
+      #{content,jdbcType=VARCHAR}, #{pubtime,jdbcType=DATE})
+  </insert>
+
+
+
+</mapper>
