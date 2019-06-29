@@ -9,11 +9,10 @@ import com.zz.ikeeping.sns.service.SnsService;
 import com.zz.ikeeping.sns.vo.VCommunityDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class SnsServiceImpl implements SnsService {
@@ -39,39 +38,46 @@ public class SnsServiceImpl implements SnsService {
         return communityDetailMapper.selectDetail();
     }
 
-    //展示xx用户发表的xx话题下的评论，前3条
+    //展示xx话题下的前3条评论
     @Override
-    public List<VCommunityDetail> showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id) {
-        VCommunityDetail vCommunityDetail = new VCommunityDetail();
-
-        vCommunityDetail.setUid(uid);
-        vCommunityDetail.setId(id);
-
-        List<VCommunityDetail> commentList = commentMapper.selectComment(vCommunityDetail);
-        return commentList;
+    public List<VCommunityDetail> showTopicComment(int id) {
+        return commentMapper.selectComment(id);
     }
 
+    //展示xx话题下的评论数量
     @Override
-    public Map<String, Object> addCommont(Comment comment) {
-        return null;
+    public int commentCount(int id) {
+        List<VCommunityDetail> list = showTopicComment(id);
+        return list.size();
     }
 
+    //展示xx话题的点赞数量
+    @Override
+    public int topicPraise(int id) {
+        return 0;
+    }
 
+    //xx话题类型下最新发表的话题
+    @Override
+    public List<VCommunityDetail> newPublishTopicDetail(int cmid) {
+        return communityDetailMapper.newPublishTopicDetail(cmid);
+    }
+
+    // 查看所有评论
     @Override
     public List<Comment> allCommont() {
         return commentMapper.all();
     }
 
-    //展示xx用户发表的xx话题下的评论数量
+    // 新增评论
     @Override
-    public int commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id) {
-        List<VCommunityDetail> list = showTopicComment(uid, id);
-        return list.size();
+    public int addCommont(Comment comment) {
+        return commentMapper.addCommont(comment);
     }
 
-    //展示xx用户发表的xx话题的点赞数量
+    // 回复评论
     @Override
-    public int topicPraise(int uid, int id) {
-        return 0;
+    public void replyCommont(Comment comment) {
+        commentMapper.replyCommont(comment);
     }
 }
