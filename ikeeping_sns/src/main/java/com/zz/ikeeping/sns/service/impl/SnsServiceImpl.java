@@ -63,6 +63,12 @@ public class SnsServiceImpl implements SnsService {
         return communityDetailMapper.newPublishTopicDetail(cmid);
     }
 
+    //XX类型下最多评论的话题
+    @Override
+    public List<VCommunityDetail> showTopicAtMostComment(int cmid) {
+        return communityDetailMapper.showTopicAtMostComment(cmid);
+    }
+
     // 查看所有评论
     @Override
     public List<Comment> allCommont() {

@@ -26,6 +26,9 @@ public interface SnsService {
     @GetMapping("sns/newPublishTopicDetail.do")
     R newPublishTopicDetail(@RequestParam("cmid") int cmid);
 
+    @GetMapping("sns/showTopicAtMostComment.do")
+    R showTopicAtMostComment(@RequestParam("cmid") int cmid);
+
     /*------------------------------------------------------------------------------------------------------------------*/
 
     @GetMapping("sns/allCommont.do")

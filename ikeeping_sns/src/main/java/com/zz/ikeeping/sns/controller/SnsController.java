@@ -46,6 +46,12 @@ public class SnsController {
         List<VCommunityDetail> list = snsService.newPublishTopicDetail(cmid);
         return R.setOK("OK",list);
     }
+    
+    @GetMapping("sns/showTopicAtMostComment.do")
+    public R showTopicAtMostComment(int cmid) {
+        List<VCommunityDetail> list = snsService.showTopicAtMostComment(cmid);
+        return R.setOK("OK",list);
+    }
 
     /*--------------------------------------------------------------------------------------------------------------------------------*/
 

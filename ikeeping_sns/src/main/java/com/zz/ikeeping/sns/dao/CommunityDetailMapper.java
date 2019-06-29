@@ -9,5 +9,5 @@ public interface CommunityDetailMapper {
 
     List<VCommunityDetail> newPublishTopicDetail(int cmid);
 
-
+    List<VCommunityDetail> showTopicAtMostComment(int cmid);
 }

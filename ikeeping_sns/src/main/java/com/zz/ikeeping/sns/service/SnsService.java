@@ -23,6 +23,8 @@ public interface SnsService {
 
     List<VCommunityDetail> newPublishTopicDetail(int cmid);
 
+    List<VCommunityDetail> showTopicAtMostComment(int cmid);
+
     /*------------------------------------------------------------------------------------------------------------------*/
 
     List<Comment> allCommont();
