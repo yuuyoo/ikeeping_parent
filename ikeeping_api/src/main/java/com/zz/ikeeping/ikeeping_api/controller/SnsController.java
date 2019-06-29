@@ -43,17 +43,19 @@ public class SnsController {
         return snsService.commentCount(id);
     }
 
-
+    // 查看所有评论
     @GetMapping("api/sns/allCommont.do")
     public R allCommont() {
         return snsService.allCommont();
     }
 
+    // 新增评论
     @PostMapping("api/sns/addCommont.do")
     public R addCommont(@RequestBody Comment comment) {
         return snsService.addCommont(comment);
     }
 
+    // 回复评论
     @PostMapping("api/sns/replyCommont.do")
     public R replyCommont(@RequestBody Comment comment) {
         return snsService.replyCommont(comment);
