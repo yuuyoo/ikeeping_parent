@@ -6,7 +6,7 @@ import com.zz.ikeeping.ikeeping_api.service.PhysiqueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+//@RestController
 public class PhysiqueController {
     @Autowired
     private PhysiqueService service;
