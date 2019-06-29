@@ -31,4 +31,8 @@
     <select id="all" resultType="com.zz.ikeeping.entity.Comment">
         select * from t_comment;
     </select>
+
+    <update id="commont" parameterType="com.zz.ikeeping.entity.Comment">
+        update t_comment set count=#{count} where id = #{id}
+    </update>
 </mapper>

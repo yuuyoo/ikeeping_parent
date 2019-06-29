@@ -13,4 +13,7 @@
     ORDER BY cd.pubtime DESC;
   </select>
 
+  <update id="topicPraise" parameterType="com.zz.ikeeping.entity.CommunityDetail">
+        update t_communitydetail set count=#{count} where id = #{id}
+  </update>
 </mapper>

@@ -1,5 +1,6 @@
 package com.zz.ikeeping.sns.controller;
 
+import com.zz.ikeeping.common.config.ProjectConfig;
 import com.zz.ikeeping.common.vo.R;
 import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.Community;
@@ -56,5 +57,17 @@ public class SnsController {
     @PostMapping("sns/replyCommont.do")
     public void replyCommont(@RequestBody Comment comment) {
         snsService.replyCommont(comment);
+    }
+
+    @PutMapping("sns/topic.do")
+    public R topicPraise(@RequestParam("id") int id, @RequestParam("count") int count){
+        int i = snsService.topicPraise(id, count);
+        return R.setOK("OK", i);
+    }
+
+    @PutMapping("sns/commont.do")
+    public R commont(@RequestParam("id") int id, @RequestParam("count") int count){
+        int i = snsService.commont(id, count);
+        return R.setOK("OK", i);
     }
 }

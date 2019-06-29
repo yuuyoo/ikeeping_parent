@@ -1,5 +1,6 @@
 package com.zz.ikeeping.sns.service.impl;
 
+import com.zz.ikeeping.common.config.ProjectConfig;
 import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.Community;
 import com.zz.ikeeping.sns.dao.CommentMapper;
@@ -9,7 +10,6 @@ import com.zz.ikeeping.sns.service.SnsService;
 import com.zz.ikeeping.sns.vo.VCommunityDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -57,11 +57,6 @@ public class SnsServiceImpl implements SnsService {
         return list.size();
     }
 
-    //展示xx用户发表的xx话题的点赞数量
-    @Override
-    public int topicPraise(int uid, int id) {
-        return 0;
-    }
 
     // 查看所有评论
     @Override
@@ -79,5 +74,19 @@ public class SnsServiceImpl implements SnsService {
     @Override
     public void replyCommont(Comment comment) {
         commentMapper.replyCommont(comment);
+    }
+
+    //展示xx用户发表的xx话题的点赞数量
+    @Override
+    public int topicPraise(@RequestParam("id") int id, @RequestParam("count") int count) {
+        count = count + 1;
+        return communityDetailMapper.topicPraise(id, count);
+    }
+
+    //展示xx用户发表的xx话题下评论的点赞数量
+    @Override
+    public int commont(@RequestParam("id") int id, @RequestParam("count") int count) {
+        count = count + 1;
+        return commentMapper.commont(id, count);
     }
 }

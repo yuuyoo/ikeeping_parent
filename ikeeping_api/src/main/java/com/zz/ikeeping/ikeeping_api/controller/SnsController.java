@@ -1,6 +1,7 @@
 package com.zz.ikeeping.ikeeping_api.controller;
 
 
+import com.zz.ikeeping.common.config.ProjectConfig;
 import com.zz.ikeeping.common.vo.R;
 import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.ikeeping_api.service.SnsService;
@@ -48,4 +49,13 @@ public class SnsController {
         return snsService.replyCommont(comment);
     }
 
+    @PutMapping("sns/topic.do")
+    R topicPraise(@RequestParam("id") int id, @RequestParam("count") int count){
+        return snsService.topicPraise(id, count);
+    }
+
+    @PutMapping("sns/commont.do")
+    R commont(@RequestParam("id") int id, @RequestParam("count") int count){
+        return snsService.commont(id, count);
+    }
 }
