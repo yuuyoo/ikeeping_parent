@@ -7,5 +7,7 @@ import java.util.List;
 public interface CommunityDetailMapper {
     List<VCommunityDetail> selectDetail();
 
+    List<VCommunityDetail> newPublishTopicDetail(int cmid);
 
+    List<VCommunityDetail> showTopicAtMostComment(int cmid);
 }

@@ -7,10 +7,31 @@
   </sql>
 
   <select id="selectDetail" resultType="com.zz.ikeeping.sns.vo.VCommunityDetail">
-    SELECT u.uid, u.imgurl, u.uname, cd.content, cd.imgurl deimg, cd.pubtime, cd.location FROM t_communitydetail cd
+    SELECT cd.id, u.uid, u.imgurl, u.uname, cd.content, cd.imgurl deimg, cd.pubtime, cd.location
+    FROM t_communitydetail cd
     inner join t_user u
     on cd.uid = u.uid
     ORDER BY cd.pubtime DESC;
   </select>
 
+  <select id="newPublishTopicDetail" parameterType="int" resultType="com.zz.ikeeping.sns.vo.VCommunityDetail">
+    SELECT cd.id, u.uid, u.imgurl, u.uname, cd.content, cd.imgurl deimg, cd.pubtime, cd.location
+    FROM t_communitydetail cd
+    inner join t_user u
+    on cd.uid = u.uid
+    WHERE cd.cmid = #{cmid}
+    ORDER BY cd.pubtime DESC;
+  </select>
+
+  <select id="showTopicAtMostComment" parameterType="int" resultType="com.zz.ikeeping.sns.vo.VCommunityDetail">
+    SELECT count(*) count, cd.id, u.uid, u.imgurl, u.uname, cd.content, cd.imgurl deimg, cd.pubtime, cd.location
+    FROM t_communitydetail cd
+    RIGHT join t_comment c
+    on c.cmid = cd.id
+    inner join t_user u
+    on u.uid = cd.uid
+    WHERE cd.cmid = #{cmid}
+    GROUP BY c.cmid
+    ORDER BY count DESC
+  </select>
 </mapper>
