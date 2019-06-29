@@ -1,6 +1,21 @@
 package com.zz.ikeeping.common.config;
 
 public class ProjectConfig {
+
+
+
+
+
+    //初始积分 -新用户
+    public static final int INITNEWSCORE=50;
+    public static final int INITNEWSEXPIRE=30; //有效期 新增
+    public static final int NEWSEXPIRE=365; //有效期 签到
+
+    public static final int NEWSCORE=30;//第一次签到送30积分
+    //购物车上限  商品个数
+    public static final int CARTMAXGOODS=200;
+
+
     //Redis信息
     public static final String REDISHOST="39.105.189.141";
     public static final int REDISPORT=6380;
@@ -18,11 +33,12 @@ public class ProjectConfig {
     //
     public static final String TOKENHEAD="usertoken";
 
+    public static final String NewDetail="rcount";//咨询阅读数
 
 
     //短信配置
-    public static final String SMSKEY="97245bbce1178f6b82233a8c631e4c76";
-    public static final String SMSTEMPID="164065";
+    public static final String SMSKEY="2ea33e65908eea210dd73d54b0f25b66";
+    public static final String SMSTEMPID="168551";
 
     //邮箱相关配置
     public static final String EMAIL="lx_teach@163.com";

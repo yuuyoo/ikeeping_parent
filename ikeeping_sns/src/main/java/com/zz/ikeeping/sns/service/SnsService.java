@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface SnsService {
+
     List<Community> showTopicType();
 
     List<VCommunityDetail> selectDetail();

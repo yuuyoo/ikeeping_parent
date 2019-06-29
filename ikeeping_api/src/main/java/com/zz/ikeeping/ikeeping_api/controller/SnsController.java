@@ -43,7 +43,6 @@ public class SnsController {
         return snsService.commentCount(id);
     }
 
-    /*------------------------------------------------------------------------------------------------------------------*/
 
     @GetMapping("api/sns/allCommont.do")
     public R allCommont() {
