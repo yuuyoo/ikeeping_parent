@@ -9,11 +9,10 @@ import com.zz.ikeeping.sns.service.SnsService;
 import com.zz.ikeeping.sns.vo.VCommunityDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class SnsServiceImpl implements SnsService {
@@ -51,17 +50,6 @@ public class SnsServiceImpl implements SnsService {
         return commentList;
     }
 
-    @Override
-    public Map<String, Object> addCommont(Comment comment) {
-        return null;
-    }
-
-
-    @Override
-    public List<Comment> allCommont() {
-        return commentMapper.all();
-    }
-
     //展示xx用户发表的xx话题下的评论数量
     @Override
     public int commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id) {
@@ -73,5 +61,23 @@ public class SnsServiceImpl implements SnsService {
     @Override
     public int topicPraise(int uid, int id) {
         return 0;
+    }
+
+    // 查看所有评论
+    @Override
+    public List<Comment> allCommont() {
+        return commentMapper.all();
+    }
+
+    // 新增评论
+    @Override
+    public int addCommont(Comment comment) {
+        return commentMapper.addCommont(comment);
+    }
+
+    // 回复评论
+    @Override
+    public void replyCommont(Comment comment) {
+        commentMapper.replyCommont(comment);
     }
 }

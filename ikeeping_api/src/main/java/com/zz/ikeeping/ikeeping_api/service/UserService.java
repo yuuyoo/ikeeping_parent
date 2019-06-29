@@ -17,10 +17,10 @@ public interface UserService {
     //校验手机号是否存在
     @GetMapping("user/checkphone.do")
     R check(@RequestParam("phone") String phone);
-    // 根据验证码注册
     @GetMapping("user/verifyCode.do")
     R verifyCode(@RequestParam("phone") String phone, @RequestParam("code") int code);
-
+    @GetMapping("user/sendcode.do")
+    R sendCode(@RequestParam("phone") String phone);
 }
 
 

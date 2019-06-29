@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @create 2019-06-27 22:30
  * @desc 微信支付控制器
  **/
-@Api(value = "统一的微信字符接口平台", tags = "微信支付数据接口")
+@Api(value = "统一的微信支付接口平台", tags = "微信支付数据接口")
 @RestController
 public class WechatPayController {
 
