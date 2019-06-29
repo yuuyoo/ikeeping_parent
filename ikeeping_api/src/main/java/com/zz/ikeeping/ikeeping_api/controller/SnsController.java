@@ -31,6 +31,12 @@ public class SnsController {
         return snsService.newPublishTopicDetail(cmid);
     }
 
+    //XX类型下最多评论的话题
+    @GetMapping("api/sns/showTopicAtMostComment.do")
+    public R showTopicAtMostComment(@RequestParam("cmid") int cmid) {
+        return snsService.showTopicAtMostComment(cmid);
+    }
+
     //展示xx话题下的前3条评论
     @GetMapping("api/sns/showTopicComment.do")
     public R showTopicComment(@RequestParam("id") int id) {
