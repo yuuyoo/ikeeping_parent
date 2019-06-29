@@ -33,6 +33,7 @@ public class ProjectConfig {
     //
     public static final String TOKENHEAD="usertoken";
 
+    public static final String NewDetail="rcount";//咨询阅读数
 
 
     //短信配置
