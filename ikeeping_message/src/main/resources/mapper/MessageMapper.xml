@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.ikeeping.message.core.dao.MessageMapper">
+  <resultMap id="BaseResultMap" type="com.zz.ikeeping.message.core.entity.Message">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="pcode" jdbcType="INTEGER" property="pcode" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="receive" jdbcType="VARCHAR" property="receive" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, pcode, type, title, content, receive, flag
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from message order by id desc
+
+  </select>
+
+  <insert id="insert" parameterType="com.zz.ikeeping.message.core.entity.Message" useGeneratedKeys="true" keyProperty="id">
+    insert into message (pcode, type, title, content, receive, flag)
+    values (#{pcode,jdbcType=INTEGER}, #{type,jdbcType=INTEGER},
+      #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{receive,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER})
+  </insert>
+
+</mapper>
