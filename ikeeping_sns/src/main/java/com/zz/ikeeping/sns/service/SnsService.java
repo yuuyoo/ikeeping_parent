@@ -7,6 +7,7 @@ import com.zz.ikeeping.sns.vo.VCommunityDetail;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Map;
 
 public interface SnsService {
 
@@ -14,9 +15,18 @@ public interface SnsService {
 
     List<VCommunityDetail> selectDetail();
 
-    List<VCommunityDetail> showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id);
+    List<VCommunityDetail> showTopicComment(int id);
 
-    int commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id);
+    int commentCount(int id);
+
+    //展示点赞数量-未写完
+    int topicPraise(int id);
+
+    List<VCommunityDetail> newPublishTopicDetail(int cmid);
+
+    List<VCommunityDetail> showTopicAtMostComment(int cmid);
+
+    /*------------------------------------------------------------------------------------------------------------------*/
 
     List<Comment> allCommont();
 

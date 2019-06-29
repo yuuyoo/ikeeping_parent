@@ -14,38 +14,57 @@ public class SnsController {
     @Autowired
     private SnsService snsService;
 
+    //页面顶端展示话题类型
     @GetMapping("api/sns/showTopicType.do")
     public R selectTopicType() {
         return snsService.selectTopicType();
     }
 
+    //展示最新发表的话题，不限话题类型
     @GetMapping("api/sns/selectDetail.do")
     public R selectDetail() {
         return snsService.selectDetail();
     }
 
+    //xx话题类型下最新发表的话题
+    @GetMapping("api/sns/newPublishTopicDetail.do")
+    public R newPublishTopicDetail(@RequestParam("cmid") int cmid) {
+        return snsService.newPublishTopicDetail(cmid);
+    }
+
+    //XX类型下最多评论的话题
+    @GetMapping("api/sns/showTopicAtMostComment.do")
+    public R showTopicAtMostComment(@RequestParam("cmid") int cmid) {
+        return snsService.showTopicAtMostComment(cmid);
+    }
+
+    //展示xx话题下的前3条评论
     @GetMapping("api/sns/showTopicComment.do")
-    public R showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id) {
-        return snsService.showTopicComment(uid, id);
+    public R showTopicComment(@RequestParam("id") int id) {
+        return snsService.showTopicComment(id);
     }
 
+    //展示xx话题下的评论数量
     @GetMapping("api/sns/commentCount.do")
-    public R commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id) {
-        return snsService.commentCount(uid, id);
+    public R commentCount(@RequestParam("id") int id) {
+        return snsService.commentCount(id);
     }
 
+    // 查看所有评论
     @GetMapping("api/sns/allCommont.do")
     public R allCommont() {
         return snsService.allCommont();
     }
 
-    @PostMapping("sns/addCommont.do")
-    public R addCommont(@RequestBody Comment comment){
+    // 新增评论
+    @PostMapping("api/sns/addCommont.do")
+    public R addCommont(@RequestBody Comment comment) {
         return snsService.addCommont(comment);
     }
 
-    @PostMapping("sns/replyCommont.do")
-    public R replyCommont(@RequestBody Comment comment){
+    // 回复评论
+    @PostMapping("api/sns/replyCommont.do")
+    public R replyCommont(@RequestBody Comment comment) {
         return snsService.replyCommont(comment);
     }
 

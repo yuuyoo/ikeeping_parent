@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.ikeeping.news.dao.NewsDetailMapper">
+  <resultMap id="BaseResultMap" type="com.zz.ikeeping.entity.NewsDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="rewardcount" jdbcType="INTEGER" property="rewardcount" />
+    <result column="readcount" jdbcType="INTEGER" property="readcount" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="gid" jdbcType="INTEGER" property="gid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.zz.ikeeping.entity.NewsDetail">
+    <result column="detailcontent" jdbcType="LONGVARCHAR" property="detailcontent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, rewardcount, readcount, cid, gid
+  </sql>
+  <sql id="Blob_Column_List">
+    detailcontent
+  </sql>
+  <select id="selectOne" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    from t_newsdetail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_newsdetail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zz.ikeeping.entity.NewsDetail">
+    insert into t_newsdetail (id, rewardcount, readcount, 
+      cid, gid, detailcontent
+      )
+    values (#{id,jdbcType=INTEGER}, #{rewardcount,jdbcType=INTEGER}, #{readcount,jdbcType=INTEGER}, 
+      #{cid,jdbcType=INTEGER}, #{gid,jdbcType=INTEGER}, #{detailcontent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+
+  <update id="update" parameterType="com.zz.ikeeping.entity.NewsDetail">
+    update t_newsdetail
+    <set>
+      <if test="rewardcount != null">
+        rewardcount = #{rewardcount,jdbcType=INTEGER},
+      </if>
+      <if test="readcount != null">
+        readcount = #{readcount,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null">
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="gid != null">
+        gid = #{gid,jdbcType=INTEGER},
+      </if>
+      <if test="detailcontent != null">
+        detailcontent = #{detailcontent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>

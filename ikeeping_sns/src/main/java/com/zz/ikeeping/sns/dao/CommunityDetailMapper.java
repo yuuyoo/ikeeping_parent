@@ -11,4 +11,8 @@ public interface CommunityDetailMapper {
 
     //话题点赞数量
     int topicPraise(@RequestParam("id") int id, @RequestParam("count") int count);
+
+    List<VCommunityDetail> newPublishTopicDetail(int cmid);
+
+    List<VCommunityDetail> showTopicAtMostComment(int cmid);
 }
