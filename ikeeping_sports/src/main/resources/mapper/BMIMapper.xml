@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.ikeeping.sports.dao.BMIMapper">
+    <insert id="insert" parameterType="com.zz.ikeeping.entity.BMI">
+          insert into t_bmi  (uid, weight,hight,status) values (#{uid}, #{weight},#{hight},#{status})
+    </insert>
+    <select id="findByUid" parameterType="int" resultType="com.zz.ikeeping.entity.BMI">
+        select * from t_bmi where uid = #{uid}
+    </select>
+</mapper>

@@ -1,8 +1,8 @@
-package com.zz.ikeeping.ikeeping_api.controller;
+package com.zz.ikeeping.sports.controller;
 
 import com.zz.ikeeping.common.vo.R;
 import com.zz.ikeeping.entity.BMI;
-import com.zz.ikeeping.ikeeping_api.service.PhysiqueService;
+import com.zz.ikeeping.sports.service.PhysiqueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 public class PhysiqueController {
     @Autowired
     private PhysiqueService service;
-
     /**
      * 通过给出体重和身高计算身体质量指数，返回结果
      */
@@ -26,6 +25,6 @@ public class PhysiqueController {
      */
     @GetMapping("sports/single.do")
     public R findByUid(@RequestParam("uid") int uid) {
-      return service.findByUid(uid);
+        return service.findByUid(uid);
     }
 }

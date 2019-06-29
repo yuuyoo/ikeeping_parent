@@ -1,5 +1,8 @@
 package com.zz.ikeeping.sports.dao;
 
-public interface BMIMapper {
+import com.zz.ikeeping.entity.BMI;
 
+public interface BMIMapper {
+    int insert (BMI bmi);
+    BMI findByUid(int uid);
 }
