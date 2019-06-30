@@ -1,11 +1,14 @@
 package com.zz.ikeeping.ikeeping_api.controller;
 
 
+import com.zz.ikeeping.common.config.ProjectConfig;
 import com.zz.ikeeping.common.vo.R;
-import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.ikeeping_api.service.SnsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class SnsController {
@@ -33,19 +36,18 @@ public class SnsController {
         return snsService.commentCount(uid, id);
     }
 
-    @GetMapping("api/sns/allCommont.do")
+    @GetMapping({"api/sns/allCommont.do"})
     public R allCommont() {
-        return snsService.allCommont();
+        return this.snsService.allCommont();
     }
 
-    @PostMapping("sns/addCommont.do")
-    public R addCommont(@RequestBody Comment comment){
-        return snsService.addCommont(comment);
+    @PutMapping("sns/topic.do")
+    R topicPraise(@RequestParam("id") int id, @RequestParam("count") int count){
+        return snsService.topicPraise(id, count);
     }
 
-    @PostMapping("sns/replyCommont.do")
-    public R replyCommont(@RequestBody Comment comment){
-        return snsService.replyCommont(comment);
+    @PutMapping("sns/commont.do")
+    R commont(@RequestParam("id") int id, @RequestParam("count") int count){
+        return snsService.commont(id, count);
     }
-
 }

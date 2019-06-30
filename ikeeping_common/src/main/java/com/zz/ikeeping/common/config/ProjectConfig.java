@@ -1,5 +1,8 @@
 package com.zz.ikeeping.common.config;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ProjectConfig {
 
 
@@ -33,10 +36,6 @@ public class ProjectConfig {
     //
     public static final String TOKENHEAD="usertoken";
 
-    public static final String NEWDETAIL="rcount";//咨询阅读数
-    public static final String PRAISE="pcount";//点赞数
-    public static  final  String COMMENT="count";//评论数
-
 
 
     //短信配置
@@ -69,6 +68,13 @@ public class ProjectConfig {
     //资源文件的前缀
     public static final String RESOURCEURL="http://localhost:9804/ljbresource/";
 
+
+    public static Map<Integer,String> projects;
+    static {
+        projects=new HashMap<>();
+        projects.put(10001,"爱健身");
+
+    }
 
     //OSS配置
     // Endpoint以杭州为例，其它Region请按实际情况填写。

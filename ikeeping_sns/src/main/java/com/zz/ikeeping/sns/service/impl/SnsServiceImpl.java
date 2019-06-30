@@ -1,5 +1,6 @@
 package com.zz.ikeeping.sns.service.impl;
 
+import com.zz.ikeeping.common.config.ProjectConfig;
 import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.Community;
 import com.zz.ikeeping.sns.dao.CommentMapper;
@@ -79,5 +80,19 @@ public class SnsServiceImpl implements SnsService {
     @Override
     public void replyCommont(Comment comment) {
         commentMapper.replyCommont(comment);
+    }
+
+    //展示xx用户发表的xx话题的点赞数量
+    @Override
+    public int topicPraise(@RequestParam("id") int id, @RequestParam("count") int count) {
+        count = count + 1;
+        return communityDetailMapper.topicPraise(id, count);
+    }
+
+    //展示xx用户发表的xx话题下评论的点赞数量
+    @Override
+    public int commont(@RequestParam("id") int id, @RequestParam("count") int count) {
+        count = count + 1;
+        return commentMapper.commont(id, count);
     }
 }
