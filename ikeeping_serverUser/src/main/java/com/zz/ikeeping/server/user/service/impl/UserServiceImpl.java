@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public R checkPhone(String phone) {
         User user=userMapper.selectByPhone(phone);
-        if(user!=null){
+        if(user == null){
             return R.setOK("当前手机号可用");
         }else {
             return R.setERROR("手机号已经注册过，请找回密码");
@@ -41,21 +41,27 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(rollbackFor = {UserException.class})
     public R save(User user) throws UserException {
-        // 注册自动生成6位数字的密码
-        int code = CodeUtil.createCode(6);
-        try {
-            System.out.println(code);
-            // 随机生成的密码进行加密
-            user.setPassword(EncryptionUtil.RSAEnc(ProjectConfig.PASSRSAPRI,Integer.toString(code)));
-            user.setUname(String.valueOf(user.getUid()));
-            // 新增用户
-            userMapper.insert(user);
-            // 初始化其他
-        } catch (Exception e) {
-            throw new UserException("用户注册异常"+ e.getMessage());
+        if(userMapper.selectByPhone(user.getPhone())== null) {
+            // 注册自动生成6位数字的密码
+            int code = CodeUtil.createCode(6);
+            try {
+                System.out.println(code);
+                // 随机生成的密码进行加密
+                user.setPassword(EncryptionUtil.RSAEnc(ProjectConfig.PASSRSAPRI,Integer.toString(code)));
+                user.setUname(String.valueOf(user.getUid()));
+                // 新增用户
+                userMapper.insert(user);
+                // 初始化其他
+            } catch (Exception e) {
+                throw new UserException("用户注册异常"+ e.getMessage());
+            }
+
+            return R.setOK("您的初始密码为：", code);
+        } else  {
+            return R.setERROR("您已经注册请找回密码");
         }
 
-        return R.setOK("您的初始密码为：", code);
+
     }
 
 
