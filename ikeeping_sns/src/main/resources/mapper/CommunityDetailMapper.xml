@@ -22,4 +22,24 @@
     WHERE cd.cmid = #{cmid}
     ORDER BY cd.pubtime DESC;
   </select>
+
+  <update id="topicPraise" parameterType="int">
+    update t_communitydetail set count=#{count} where id = #{id}
+  </update>
+
+  <insert id="add" parameterType="int">
+    insert into t_communitydetail(cmid,uid,pubtime,location,content,imgurl,count) values(#{cmid},#{uid},now(),#{location},#{content},#{imgurl},#{count})
+  </insert>
+
+  <select id="showTopicAtMostComment" parameterType="int" resultType="com.zz.ikeeping.sns.vo.VCommunityDetail">
+    SELECT count(*) count, cd.id, u.uid, u.imgurl, u.uname, cd.content, cd.imgurl deimg, cd.pubtime, cd.location
+    FROM t_communitydetail cd
+    RIGHT join t_comment c
+    on c.cmid = cd.id
+    inner join t_user u
+    on u.uid = cd.uid
+    WHERE cd.cmid = #{cmid}
+    GROUP BY c.cmid
+    ORDER BY count DESC
+  </select>
 </mapper>

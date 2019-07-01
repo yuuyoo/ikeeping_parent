@@ -9,7 +9,6 @@ import com.zz.ikeeping.sns.service.SnsService;
 import com.zz.ikeeping.sns.vo.VCommunityDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -51,22 +50,28 @@ public class SnsServiceImpl implements SnsService {
         return list.size();
     }
 
-    //展示xx话题的点赞数量
-    @Override
-    public int topicPraise(int id) {
-        return 0;
-    }
-
     //xx话题类型下最新发表的话题
     @Override
     public List<VCommunityDetail> newPublishTopicDetail(int cmid) {
         return communityDetailMapper.newPublishTopicDetail(cmid);
     }
 
+    //XX类型下最多评论的话题
+    @Override
+    public List<VCommunityDetail> showTopicAtMostComment(int cmid) {
+        return communityDetailMapper.showTopicAtMostComment(cmid);
+    }
+
     // 查看所有评论
     @Override
     public List<Comment> allCommont() {
         return commentMapper.all();
+    }
+
+    // 新增话题下的说说
+    @Override
+    public int add(CommunityDetailMapper detailMapper) {
+        return communityDetailMapper.add(detailMapper);
     }
 
     // 新增评论
@@ -79,5 +84,19 @@ public class SnsServiceImpl implements SnsService {
     @Override
     public void replyCommont(Comment comment) {
         commentMapper.replyCommont(comment);
+    }
+
+    //展示xx用户发表的xx话题的点赞数量
+    @Override
+    public int topicPraise(@RequestParam("id") int id, @RequestParam("count") int count) {
+        count = count + 1;
+        return communityDetailMapper.topicPraise(id, count);
+    }
+
+    //展示xx用户发表的xx话题下评论的点赞数量
+    @Override
+    public int commont(@RequestParam("id") int id, @RequestParam("count") int count) {
+        count = count + 1;
+        return commentMapper.commont(id, count);
     }
 }
