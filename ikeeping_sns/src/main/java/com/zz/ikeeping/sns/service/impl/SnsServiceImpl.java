@@ -1,5 +1,6 @@
 package com.zz.ikeeping.sns.service.impl;
 
+import com.zz.ikeeping.common.util.JedisUtil;
 import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.Community;
 import com.zz.ikeeping.sns.dao.CommentMapper;
@@ -24,6 +25,9 @@ public class SnsServiceImpl implements SnsService {
 
     @Autowired
     private CommentMapper commentMapper;
+
+    @Autowired
+    private JedisUtil jedisUtil;
 
     //页面顶端展示话题类型
     @Override
