@@ -15,11 +15,8 @@ public class PhysiqueServiceImpl implements PhysiqueService {
     private BMIMapper mapper;
     @Override
     public String calBMI(BMI bmi) {
-        Float weight = bmi.getWeight();
-        float height = bmi.getHight();
-        bmi.setWeight(weight);
-        bmi.setHight(height);
-        bmi.setUid(bmi.getUid());
+       Float weight = bmi.getWeight();
+       float height = bmi.getHight();
         height = height / 100;
         float b = weight / (height * height);
         String t = null;
