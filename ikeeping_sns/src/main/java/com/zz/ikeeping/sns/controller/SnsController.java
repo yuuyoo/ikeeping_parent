@@ -4,6 +4,7 @@ import com.zz.ikeeping.common.config.ProjectConfig;
 import com.zz.ikeeping.common.vo.R;
 import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.Community;
+import com.zz.ikeeping.sns.dao.CommunityDetailMapper;
 import com.zz.ikeeping.sns.service.SnsService;
 import com.zz.ikeeping.sns.vo.VCommunityDetail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,10 @@ public class SnsController {
         return R.setOK("OK", list);
     }
 
+    @PostMapping("sns/add.do")
+    public R addCommont(CommunityDetailMapper detailMapper) {
+        return R.setOK("OK",(snsService.add(detailMapper)));
+    }
     @PostMapping("sns/addCommont.do")
     public R addCommont(@RequestBody Comment comment) {
         int i  = snsService.addCommont(comment);

@@ -1,6 +1,5 @@
 package com.zz.ikeeping.sns.service.impl;
 
-import com.zz.ikeeping.common.config.ProjectConfig;
 import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.Community;
 import com.zz.ikeeping.sns.dao.CommentMapper;
@@ -10,7 +9,6 @@ import com.zz.ikeeping.sns.service.SnsService;
 import com.zz.ikeeping.sns.vo.VCommunityDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -39,35 +37,41 @@ public class SnsServiceImpl implements SnsService {
         return communityDetailMapper.selectDetail();
     }
 
-    //展示xx用户发表的xx话题下的评论，前3条
+    //展示xx话题下的前3条评论
     @Override
-    public List<VCommunityDetail> showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id) {
-        VCommunityDetail vCommunityDetail = new VCommunityDetail();
-
-        vCommunityDetail.setUid(uid);
-        vCommunityDetail.setId(id);
-
-        List<VCommunityDetail> commentList = commentMapper.selectComment(vCommunityDetail);
-        return commentList;
+    public List<VCommunityDetail> showTopicComment(int id) {
+        return commentMapper.selectComment(id);
     }
 
-    //展示xx用户发表的xx话题下的评论数量
+    //展示xx话题下的评论数量
     @Override
-    public int commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id) {
-        List<VCommunityDetail> list = showTopicComment(uid, id);
+    public int commentCount(int id) {
+        List<VCommunityDetail> list = showTopicComment(id);
         return list.size();
     }
 
-    //展示xx用户发表的xx话题的点赞数量
+    //xx话题类型下最新发表的话题
     @Override
-    public int topicPraise(int uid, int id) {
-        return 0;
+    public List<VCommunityDetail> newPublishTopicDetail(int cmid) {
+        return communityDetailMapper.newPublishTopicDetail(cmid);
+    }
+
+    //XX类型下最多评论的话题
+    @Override
+    public List<VCommunityDetail> showTopicAtMostComment(int cmid) {
+        return communityDetailMapper.showTopicAtMostComment(cmid);
     }
 
     // 查看所有评论
     @Override
     public List<Comment> allCommont() {
         return commentMapper.all();
+    }
+
+    // 新增话题下的说说
+    @Override
+    public int add(CommunityDetailMapper detailMapper) {
+        return communityDetailMapper.add(detailMapper);
     }
 
     // 新增评论

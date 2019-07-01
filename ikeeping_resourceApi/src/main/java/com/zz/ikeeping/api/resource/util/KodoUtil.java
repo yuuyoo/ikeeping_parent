@@ -1,4 +1,3 @@
-/*
 package com.zz.ikeeping.api.resource.util;
 
 import com.google.gson.Gson;
@@ -17,13 +16,11 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.UUID;
 
-*/
 /**
  * @author DJL
  * @create 2019-06-26 20:50
  * @desc 七牛云对象存储 Kodo 文件上传工具类
- **//*
-
+ **/
 public class KodoUtil {
     // 文件上传token
     private String upToken;
@@ -39,13 +36,11 @@ public class KodoUtil {
         this.cfg = new Configuration(Zone.zone0());
     }
 
-
-    */
-/**
+    /**
      * 上传成功返回图片url地址
      * @param file
      * @return
-     *//*
+     */
 
     public String uploadMultipartFile(MultipartFile file) {
         // 上传管理类
@@ -112,4 +107,3 @@ public class KodoUtil {
         return System.currentTimeMillis()+"_"+ UUID.randomUUID().toString().replace("-","")+"_"+fileName;
     }
 }
-*/
