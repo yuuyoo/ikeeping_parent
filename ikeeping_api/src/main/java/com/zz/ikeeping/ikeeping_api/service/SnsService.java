@@ -3,6 +3,7 @@ package com.zz.ikeeping.ikeeping_api.service;
 import com.zz.ikeeping.common.config.ProjectConfig;
 import com.zz.ikeeping.common.vo.R;
 import com.zz.ikeeping.entity.Comment;
+import com.zz.ikeeping.entity.CommunityDetail;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,9 @@ public interface SnsService {
 
     @GetMapping("sns/allCommont.do")
     R allCommont();
+
+    @PostMapping("sns/add.do")
+    R add(@RequestBody CommunityDetail detail);
 
     @PostMapping("sns/addCommont.do")
     R addCommont(@RequestBody Comment comment);

@@ -13,7 +13,7 @@ public interface CommentMapper {
 
     int insert(Community community);
 
-    List<VCommunityDetail> selectComment(@RequestBody VCommunityDetail vCommunityDetail);
+    List<VCommunityDetail> selectComment(@RequestParam("id") int id);
 
     //展示所有评论
     List<Comment> all();
