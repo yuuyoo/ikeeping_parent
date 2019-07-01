@@ -36,7 +36,10 @@ public class ProjectConfig {
     //
     public static final String TOKENHEAD="usertoken";
 
-    public static final String NewDetail="rcount";//咨询阅读数
+
+    public static final String NEWDETAIL="rcount";//咨询阅读数
+    public static final String PRAISE="pcount";//点赞数
+    public static  final  String COMMENT="count";//评论数
 
 
     //短信配置

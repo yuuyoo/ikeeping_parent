@@ -25,13 +25,22 @@ public class UserController {
     public R check(@RequestParam("phone") String phone){
         return userService.checkPhone(phone);
     }
-
-
     // 验证码注册
     @GetMapping("user/verifyCode.do")
     public R verifyCode(@RequestParam("phone") String phone, @RequestParam("code") int code) {
-        return userService.insert(phone, code);
+        try {
+            return userService.verifyCode(phone, code);
+        } catch (UserException e) {
+            e.printStackTrace();
+            return R.setERROR();
+        }
     }
+    // 发送验证码
+    @GetMapping("user/sendcode.do")
+    public R sendCode(@RequestParam("phone") String phone) {
+        return userService.sendCode(phone);
+    }
+
 
 
 }

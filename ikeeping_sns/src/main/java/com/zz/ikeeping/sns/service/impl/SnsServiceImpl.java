@@ -68,6 +68,7 @@ public class SnsServiceImpl implements SnsService {
         return commentMapper.all();
     }
 
+    // 新增话题下的说说
     @Override
     public int add(CommunityDetailMapper detailMapper) {
         return communityDetailMapper.add(detailMapper);

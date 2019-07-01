@@ -1,20 +1,17 @@
 package com.zz.ikeeping.service.login.controller;
 
 import com.zz.ikeeping.common.vo.R;
-import com.zz.ikeeping.entity.User;
 import com.zz.ikeeping.service.login.service.LoginService;
-import com.zz.ikeeping.service.login.service.UserUpdateService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class LoginController {
     @Autowired
     private LoginService loginService;
-    @Autowired
-    private UserUpdateService updateService;
 
     //登录
     @PostMapping("/login/login.do")
@@ -30,10 +27,5 @@ public class LoginController {
     @GetMapping("/login/exit.do")
     public R exit(@RequestParam("token")String token){
         return loginService.exitLogin(token);
-    }
-    //更新用户信息
-    @PostMapping("/user/update.do")
-    public R update(@RequestBody User user){
-        return updateService.UserInfoUpdate(user);
     }
 }

@@ -5,8 +5,6 @@ import lombok.Data;
 
 @Data
 public class VCommunityDetail extends CommunityDetail {
-    private String deimg;
-
     //用户信息
     private Integer uid;
     private String imgurl;

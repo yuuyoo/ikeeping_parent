@@ -24,7 +24,6 @@ public class UserSignController {
     }
     @GetMapping("/usersign/")
     public R signDays(@RequestParam("token") String token,@RequestParam("days") int days){
-
         return signService.queryByDays(token, days);
     }
     @PostMapping("/usersign/signsave.do")

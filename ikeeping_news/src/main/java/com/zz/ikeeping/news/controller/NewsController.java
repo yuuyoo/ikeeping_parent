@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
 
@@ -21,15 +22,21 @@ import java.util.Map;
 public class NewsController {
    @Autowired
     private NewsService newsService;
+
     @ApiOperation(value = "添加",notes = "添加")
     @PostMapping("/news/add.do")
     public R add(@RequestBody  News news){
+
      return  newsService.insert(news);
+
     }
+
     @ApiOperation(value = "查询全部分页",notes = "查询全部")
     @PostMapping("/news/find.do")
     public R find( @RequestBody  Map<String,String> map){
+
         return newsService.queryPage(map);
+
     }
 
 }

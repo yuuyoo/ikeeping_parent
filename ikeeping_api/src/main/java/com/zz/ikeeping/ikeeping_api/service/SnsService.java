@@ -17,18 +17,10 @@ public interface SnsService {
     R selectDetail();
 
     @GetMapping("sns/showTopicComment.do")
-    R showTopicComment(@RequestParam("id") int id);
+    R showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id);
 
     @GetMapping("sns/commentCount.do")
-    R commentCount(@RequestParam("id") int id);
-
-    @GetMapping("sns/newPublishTopicDetail.do")
-    R newPublishTopicDetail(@RequestParam("cmid") int cmid);
-
-    @GetMapping("sns/showTopicAtMostComment.do")
-    R showTopicAtMostComment(@RequestParam("cmid") int cmid);
-
-    /*------------------------------------------------------------------------------------------------------------------*/
+    R commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id);
 
     @GetMapping("sns/allCommont.do")
     R allCommont();
