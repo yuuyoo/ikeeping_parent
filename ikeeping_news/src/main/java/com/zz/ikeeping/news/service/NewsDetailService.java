@@ -5,7 +5,7 @@ import com.zz.ikeeping.entity.NewsDetail;
 
 public interface NewsDetailService {
     //咨询绑定id
-    R selectOne(Integer id);
+    R selectAll(Integer id);
 
     R update(NewsDetail detail);
 

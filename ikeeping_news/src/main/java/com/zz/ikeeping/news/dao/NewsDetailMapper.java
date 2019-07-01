@@ -14,7 +14,7 @@ public interface NewsDetailMapper {
 
     int insertSelective(NewsDetail record);
 
-    VNewDetail selectOne(Integer cid);
+   List<VNewDetail> selectAll(Integer cid);
 
     void update(NewsDetail detail);
 

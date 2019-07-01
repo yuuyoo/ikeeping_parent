@@ -25,7 +25,7 @@ public class NewsDetailServiceImpl implements NewsDetailService {
     private JedisUtil jedisUtil;
 
     @Override
-    public R selectOne(Integer cid) {
+    public R selectAll(Integer cid) {
 
         String s = String.valueOf(cid);
         if (jedisUtil.exists(ProjectConfig.NEWDETAIL + s)) {
@@ -38,7 +38,7 @@ public class NewsDetailServiceImpl implements NewsDetailService {
             detail.setCid(cid);
             try {
                 detailMapper.update(detail);
-                return R.setOK("ok", detailMapper.selectOne(cid));
+                return R.setOK("ok", detailMapper.selectAll(cid));
             } catch (Exception e) {
                 return R.setERROR(e.getMessage());
             }
