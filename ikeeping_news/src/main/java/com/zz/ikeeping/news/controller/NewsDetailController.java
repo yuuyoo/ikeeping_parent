@@ -22,7 +22,7 @@ public class NewsDetailController {
     @ApiOperation(value = "详情查询",notes ="详情查询")
     @GetMapping("/newsd/find.do")
     public R find(int id){
-        return detailService.selectOne(id);
+        return detailService.selectAll(id);
     }
 
 
@@ -45,7 +45,7 @@ public class NewsDetailController {
         return R.setOK("ok",detailService.pushgood(name));
     }
 
-    @ApiOperation(value = "优惠卷",notes ="详情查询")
+    @ApiOperation(value = "推荐优惠卷",notes ="详情查询")
     @GetMapping("/newsd/sale.do")  //详情id
     public R sale(int id){
         return R.setOK("ok",detailService.sale(id));

@@ -19,13 +19,13 @@ public class NewCController {
     @Autowired
     private NewsCService cService;
 
-    @ApiOperation(value = "更新数据",notes = "更新数据")
+    @ApiOperation(value = "更新动态",notes = "更新数据")
     @PutMapping("/newsc/update.do")
     public R update(@RequestBody NewsC c){
         cService.update(c);
         return R.setOK();
     }
-    @ApiOperation(value = "插入数据",notes = "插入数据")
+    @ApiOperation(value = "添加评论",notes = "插入数据")
     @PostMapping("/newsc/add.do")
     public R add(@RequestBody  NewsC c){
         cService.insert(c);

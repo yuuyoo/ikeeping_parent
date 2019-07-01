@@ -12,14 +12,14 @@
     <result column="detailcontent" jdbcType="LONGVARCHAR" property="detailcontent" />
   </resultMap>
 
-  <select id="selectOne" parameterType="java.lang.Integer" resultType="com.zz.ikeeping.news.vo.VNewDetail">
+  <select id="selectAll" parameterType="java.lang.Integer" resultType="com.zz.ikeeping.news.vo.VNewDetail">
 
-  select n.imgurl,n.pubtime,n.newstype,d.* ,c.* from t_newsdetail d
-    inner join t_news n
-    on d.cid=n.id
-    inner  join t_newsc c
-    on c.nid=d.cid
-    where cid=#{cid}
+      select n.imgurl,n.pubtime,n.newstype,d.* ,c.* from t_newsdetail d
+        inner join t_news n
+        on d.cid=n.id
+        inner join t_newsc c
+        on c.nid=d.cid
+        where cid=#{cid}
   </select>
   <select id="selectByK" parameterType="java.lang.Integer" resultType="com.zz.ikeeping.entity.NewsDetail">
 
