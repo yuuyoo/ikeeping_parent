@@ -37,6 +37,10 @@ public class ProjectConfig {
     public static final String TOKENHEAD="usertoken";
 
 
+    public static final String NEWDETAIL="rcount";//咨询阅读数
+    public static final String PRAISE="pcount";//点赞数
+    public static  final  String COMMENT="count";//评论数
+
 
     //短信配置
     public static final String SMSKEY="2ea33e65908eea210dd73d54b0f25b66";
