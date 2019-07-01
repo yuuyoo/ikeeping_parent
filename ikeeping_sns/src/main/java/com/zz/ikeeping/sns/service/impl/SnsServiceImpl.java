@@ -26,9 +26,6 @@ public class SnsServiceImpl implements SnsService {
     @Autowired
     private CommentMapper commentMapper;
 
-    @Autowired
-    private JedisUtil jedisUtil;
-
     //页面顶端展示话题类型
     @Override
     public List<Community> showTopicType() {

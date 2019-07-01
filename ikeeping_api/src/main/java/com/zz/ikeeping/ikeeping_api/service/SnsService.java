@@ -1,6 +1,6 @@
 package com.zz.ikeeping.ikeeping_api.service;
 
-import com.zz.ikeeping.common.config.ProjectConfig;
+
 import com.zz.ikeeping.common.vo.R;
 import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.CommunityDetail;
@@ -17,10 +17,16 @@ public interface SnsService {
     R selectDetail();
 
     @GetMapping("sns/showTopicComment.do")
-    R showTopicComment(@RequestParam("uid") int uid, @RequestParam("id") int id);
+    R showTopicComment(@RequestParam("id") int id);
 
     @GetMapping("sns/commentCount.do")
-    R commentCount(@RequestParam("uid") int uid, @RequestParam("id") int id);
+    R commentCount(@RequestParam("id") int id);
+
+    @GetMapping("sns/newPublishTopicDetail.do")
+    R newPublishTopicDetail(int cmid);
+
+    @GetMapping("sns/showTopicAtMostComment.do")
+    R showTopicAtMostComment(int cmid);
 
     @GetMapping("sns/allCommont.do")
     R allCommont();
