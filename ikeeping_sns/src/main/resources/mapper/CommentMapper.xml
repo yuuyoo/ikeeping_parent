@@ -8,15 +8,16 @@
 
   <!--传入参数为话题发布人id, 发布话题详情编号
       返回结果当前用户发布指定话题下所有评论，默认显示前三条-->
-  <select id="selectComment" parameterType="int" resultType="com.zz.ikeeping.sns.vo.VCommunityDetail">
-    SELECT u.uname, c.content FROM t_communitydetail cd
-    inner join t_comment c
-    on c.cmid = cd.id
-    inner join t_user u
-    on u.uid = c.ruid
-    where cd.id = #{id}
-    ORDER BY c.creatortime DESC
-    LIMIT 3
+  <select id="selectComment" parameterType="com.zz.ikeeping.sns.vo.VCommunityDetail" resultType="com.zz.ikeeping.sns.vo.VCommunityDetail">
+      SELECT cu.uname, cu.content FROM t_communitydetail cd inner join t_user u on u.uid = cd.uid
+      inner join
+      (SELECT c.ruid ,u.uname, c.content, c.uid, c.cmid FROM t_user u
+      inner join t_comment c
+      on u.uid = c.ruid) cu
+      on cu.uid = u.uid AND cu.cmid = cd.id
+      WHERE cd.uid = #{uid} and cd.id = #{id}
+      ORDER BY cd.id desc
+      LIMIT 3;
   </select>
 
     <insert id="addCommont" parameterType="com.zz.ikeeping.entity.Comment">
@@ -30,4 +31,8 @@
     <select id="all" resultType="com.zz.ikeeping.entity.Comment">
         select * from t_comment;
     </select>
+
+    <update id="commont" parameterType="com.zz.ikeeping.entity.Comment">
+        update t_comment set count=#{count} where id = #{id}
+    </update>
 </mapper>

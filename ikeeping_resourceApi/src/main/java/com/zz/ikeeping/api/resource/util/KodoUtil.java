@@ -36,12 +36,12 @@ public class KodoUtil {
         this.cfg = new Configuration(Zone.zone0());
     }
 
-
     /**
      * 上传成功返回图片url地址
      * @param file
      * @return
      */
+
     public String uploadMultipartFile(MultipartFile file) {
         // 上传管理类
         UploadManager uploadManager = new UploadManager(this.cfg);

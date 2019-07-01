@@ -66,6 +66,7 @@ public class JedisUtil {
             return jedis.set(key, value);
         }
 
+
         public long ttl(String key){
             return getJedis().ttl(key);
         }
@@ -213,7 +214,6 @@ public class JedisUtil {
             Jedis jedis = getJedis();
             return jedis.incr(key);
         }
-
 
         /**
          * 通过key给指定的value加值,如果key不存在,则这是value为该值

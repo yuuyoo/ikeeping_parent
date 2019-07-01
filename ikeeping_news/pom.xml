@@ -23,7 +23,6 @@
             <groupId>com.zz.ikeeping</groupId>
             <artifactId>ikeeping_common</artifactId>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
@@ -54,5 +53,7 @@
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
         </dependency>
+
+       
     </dependencies>
 </project>

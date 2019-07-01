@@ -16,4 +16,5 @@ public class NewsDetail {
 
     private String detailcontent;
 
+
 }

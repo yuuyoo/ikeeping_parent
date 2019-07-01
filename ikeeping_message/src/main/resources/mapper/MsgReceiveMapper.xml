@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.ikeeping.message.core.dao.MsgReceiveMapper">
+  <resultMap id="BaseResultMap" type="com.zz.ikeeping.message.core.entity.MsgReceive">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, no, createtime, flag
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from msgreceive
+  </select>
+
+  <insert id="insert" parameterType="com.zz.ikeeping.message.core.entity.MsgReceive">
+    insert into msgreceive (no,createtime,flag)
+    values ( #{no,jdbcType=VARCHAR}, now(), #{flag,jdbcType=INTEGER})
+  </insert>
+
+</mapper>

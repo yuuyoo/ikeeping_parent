@@ -11,28 +11,28 @@
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.zz.ikeeping.entity.NewsDetail">
     <result column="detailcontent" jdbcType="LONGVARCHAR" property="detailcontent" />
   </resultMap>
-  <sql id="Base_Column_List">
-    id, rewardcount, readcount, cid, gid
-  </sql>
-  <sql id="Blob_Column_List">
-    detailcontent
-  </sql>
-  <select id="selectOne" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    from t_newsdetail
-    where id = #{id,jdbcType=INTEGER}
+
+  <select id="selectAll" parameterType="java.lang.Integer" resultType="com.zz.ikeeping.news.vo.VNewDetail">
+
+      select n.imgurl,n.pubtime,n.newstype,d.* ,c.* from t_newsdetail d
+        inner join t_news n
+        on d.cid=n.id
+        inner join t_newsc c
+        on c.nid=d.cid
+        where cid=#{cid}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from t_newsdetail
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+  <select id="selectByK" parameterType="java.lang.Integer" resultType="com.zz.ikeeping.entity.NewsDetail">
+
+ select * from t_newsdetail
+    where cid=#{cid}
+  </select>
+
   <insert id="insert" parameterType="com.zz.ikeeping.entity.NewsDetail">
     insert into t_newsdetail (id, rewardcount, readcount, 
       cid, gid, detailcontent
       )
-    values (#{id,jdbcType=INTEGER}, #{rewardcount,jdbcType=INTEGER}, #{readcount,jdbcType=INTEGER}, 
-      #{cid,jdbcType=INTEGER}, #{gid,jdbcType=INTEGER}, #{detailcontent,jdbcType=LONGVARCHAR}
+    values (#{rewardcount}, #{readcount},
+      #{cid}, #{gid}, #{detailcontent}
       )
   </insert>
 
@@ -51,11 +51,26 @@
       <if test="gid != null">
         gid = #{gid,jdbcType=INTEGER},
       </if>
+
       <if test="detailcontent != null">
         detailcontent = #{detailcontent,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where cid = #{cid,jdbcType=INTEGER}
   </update>
-
+<!--推送题材-->
+  <select id="push" parameterType="string" resultType="com.zz.ikeeping.entity.News">
+  select * from  t_news  where newstype like concat("%",#{newstype},"%")
+  </select>
+<!--推荐营养餐-->
+  <select id="pushgood" parameterType="string" resultType="com.zz.ikeeping.entity.Goods">
+ select * from t_goods where name like concat(#{name},"%")
+  </select>
+<!--优惠卷-->
+  <select id="sale" parameterType="int" resultType="com.zz.ikeeping.entity.UserCoupon">
+    select u.* from t_usercoupon u
+    inner join t_newsdetail n
+    on u.id = n.gid
+    where n.id=#{id}
+  </select>
 </mapper>
