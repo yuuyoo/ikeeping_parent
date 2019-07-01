@@ -12,11 +12,6 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Date;
 
-/**
- *@Author feri
- *@Date Created in 2019/6/14 10:10
- * 基于JWT 进行封装处理
- */
 public class JwtUtil {
     /**
      * 基于JWT,生成令牌
@@ -75,14 +70,5 @@ public class JwtUtil {
         }catch (Exception e){
             return null;
         }
-    }
-
-    public static void main(String[] args) {
-//        String token=createJWT("1001","{'name':'zhangsan','phone':'18515990152'}");
-//        System.out.println(token);
-//        System.out.println("解析："+parseJWT(token));
-//        String token1=updateJWT(token);
-//        System.out.println("更新之后："+token1);
-        System.out.println(checkJWT("eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1ODkxMzMxMTk1Njc2OTE3NzYiLCJzdWIiOiJ7XCJpZFwiOlwiNTg5MTMzMTE5NTY3NjkxNzc2XCIsXCJwaG9uZVwiOlwiMTg1MTU5OTAxNTRcIixcInVpZFwiOjZ9IiwiaWF0IjoxNTYwNTAxODgxLCJleHAiOjE1NjA1MDM2ODF9.iwZfw0EkaAxtuo56-SaVNZnCXZL5E9f0FFt_oXe4aws"));
     }
 }
