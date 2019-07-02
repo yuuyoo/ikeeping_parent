@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SportsController {
     @Autowired
     private SportsService service;
+
     @GetMapping("sports/calculate.do")
     public String calBMI(@RequestParam("weight") float weight, @RequestParam("height") float height){
         return service.calBMI(height, weight);
