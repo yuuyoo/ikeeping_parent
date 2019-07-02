@@ -12,9 +12,10 @@ public interface UserService {
     R checkPhone(String phone);
     // 根据手机号注册
     R save(User user) throws UserException;
-
     // 根据手机验证码注册
-    R insert(String phone, int code);
+    R verifyCode(String phone, int code) throws UserException;
+    // 发送验证码， 记录在redis中
+    R sendCode(String phone);
 
 
 }

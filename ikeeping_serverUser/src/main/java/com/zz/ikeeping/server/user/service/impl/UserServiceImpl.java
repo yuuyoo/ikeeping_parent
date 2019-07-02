@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public R checkPhone(String phone) {
         User user=userMapper.selectByPhone(phone);
-        if(user == null){
+        if(user!=null){
             return R.setOK("当前手机号可用");
         }else {
             return R.setERROR("手机号已经注册过，请找回密码");

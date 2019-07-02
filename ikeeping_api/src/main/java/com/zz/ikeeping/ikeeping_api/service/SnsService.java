@@ -1,12 +1,11 @@
 package com.zz.ikeeping.ikeeping_api.service;
 
+
 import com.zz.ikeeping.common.vo.R;
 import com.zz.ikeeping.entity.Comment;
+import com.zz.ikeeping.entity.CommunityDetail;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @FeignClient(name = "CommentProvider")
 public interface SnsService {
@@ -29,14 +28,24 @@ public interface SnsService {
     @GetMapping("sns/showTopicAtMostComment.do")
     R showTopicAtMostComment(@RequestParam("cmid") int cmid);
 
-    /*------------------------------------------------------------------------------------------------------------------*/
+    @GetMapping("sns/pageViewCount.do")
+    R pageViewCount(@RequestParam("id") int id, @RequestParam("IP") String IP);
 
     @GetMapping("sns/allCommont.do")
     R allCommont();
+
+    @PostMapping("sns/add.do")
+    R add(@RequestBody CommunityDetail detail);
 
     @PostMapping("sns/addCommont.do")
     R addCommont(@RequestBody Comment comment);
 
     @PostMapping("sns/replyCommont.do")
     R replyCommont(@RequestBody Comment comment);
+
+    @PutMapping("sns/topic.do")
+    R topicPraise(@RequestParam("id") int id, @RequestParam("count") int count);
+
+    @PutMapping("sns/commont.do")
+    R commont(@RequestParam("id") int id, @RequestParam("count") int count);
 }

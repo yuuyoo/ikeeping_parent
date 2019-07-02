@@ -1,8 +1,10 @@
 package com.zz.ikeeping.sns.controller;
 
+import com.zz.ikeeping.common.config.ProjectConfig;
 import com.zz.ikeeping.common.vo.R;
 import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.Community;
+import com.zz.ikeeping.sns.dao.CommunityDetailMapper;
 import com.zz.ikeeping.sns.service.SnsService;
 import com.zz.ikeeping.sns.vo.VCommunityDetail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,35 +32,44 @@ public class SnsController {
     }
 
     @GetMapping("sns/showTopicComment.do")
-    public R showTopicComment(int id) {
+    public R showTopicComment(@RequestParam("id") int id) {
         List<VCommunityDetail> list = snsService.showTopicComment(id);
         return R.setOK("Ok", list);
     }
 
     @GetMapping("sns/commentCount.do")
-    public R commentCount(int id) {
+    public R commentCount(@RequestParam("id") int id) {
         int count = snsService.commentCount(id);
         return R.setOK("OK",count);
     }
 
     @GetMapping("sns/newPublishTopicDetail.do")
-    public R newPublishTopicDetail(int cmid) {
+    public R newPublishTopicDetail(@RequestParam("cmid") int cmid) {
         List<VCommunityDetail> list = snsService.newPublishTopicDetail(cmid);
         return R.setOK("OK",list);
     }
-    
+
     @GetMapping("sns/showTopicAtMostComment.do")
-    public R showTopicAtMostComment(int cmid) {
+    public R showTopicAtMostComment(@RequestParam("cmid") int cmid) {
         List<VCommunityDetail> list = snsService.showTopicAtMostComment(cmid);
         return R.setOK("OK",list);
     }
 
-    /*--------------------------------------------------------------------------------------------------------------------------------*/
+    @GetMapping("sns/pageViewCount.do")
+    public R pageViewCount(@RequestParam("id") int id, @RequestParam("IP") String Ip) {
+        int count = snsService.pageView(id, Ip);
+        return R.setOK("OK",count);
+    }
 
     @GetMapping("sns/allCommont.do")
     public R allCommont(){
         List<Comment> list = snsService.allCommont();
         return R.setOK("OK", list);
+    }
+
+    @PostMapping("sns/add.do")
+    public R addCommont(@RequestBody CommunityDetailMapper detailMapper) {
+        return R.setOK("OK",(snsService.add(detailMapper)));
     }
 
     @PostMapping("sns/addCommont.do")
@@ -70,5 +81,17 @@ public class SnsController {
     @PostMapping("sns/replyCommont.do")
     public void replyCommont(@RequestBody Comment comment) {
         snsService.replyCommont(comment);
+    }
+
+    @PutMapping("sns/topic.do")
+    public R topicPraise(@RequestParam("id") int id, @RequestParam("count") int count){
+        int i = snsService.topicPraise(id, count);
+        return R.setOK("OK", i);
+    }
+
+    @PutMapping("sns/commont.do")
+    public R commont(@RequestParam("id") int id, @RequestParam("count") int count){
+        int i = snsService.commont(id, count);
+        return R.setOK("OK", i);
     }
 }

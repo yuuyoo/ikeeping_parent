@@ -85,6 +85,8 @@
         <zxing.version>3.3.2</zxing.version>
         <!-- 支付宝支付sdk -->
         <alipay.version>3.7.26.ALL</alipay.version>
+        <!--接收reuqest请求-->
+        <httpclient.version>4.5.9</httpclient.version>
     </properties>
 
     <!-- 版本限定 -->
@@ -238,6 +240,11 @@
                 <groupId>com.alipay.sdk</groupId>
                 <artifactId>alipay-sdk-java</artifactId>
                 <version>${alipay.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

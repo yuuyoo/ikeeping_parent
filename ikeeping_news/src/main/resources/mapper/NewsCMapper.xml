@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.ikeeping.news.dao.NewsCMapper">
+  <resultMap id="BaseResultMap" type="com.zz.ikeeping.entity.NewsC">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="nid" jdbcType="INTEGER" property="nid" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="ccount" jdbcType="INTEGER" property="ccount" />
+    <result column="pcount" jdbcType="INTEGER" property="pcount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, nid, comment, ccount, pcount
+  </sql>
+
+  <insert id="insert" parameterType="com.zz.ikeeping.entity.NewsC">
+    insert into t_newsc (nid, comment,
+      ccount, pcount)
+    values ( #{nid,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR},
+      #{ccount,jdbcType=INTEGER}, #{pcount,jdbcType=INTEGER})
+  </insert>
+
+  <update id="update" parameterType="com.zz.ikeeping.entity.NewsC">
+    update t_newsc
+    <set>
+      <if test="nid != null">
+        nid = #{nid,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="ccount != null">
+        ccount = #{ccount,jdbcType=INTEGER},
+      </if>
+      <if test="pcount != null">
+        pcount = #{pcount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where nid= #{nid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zz.ikeeping.entity.NewsC">
+    update t_newsc
+    set nid = #{nid,jdbcType=INTEGER},
+      comment = #{comment,jdbcType=VARCHAR},
+      ccount = #{ccount,jdbcType=INTEGER},
+      pcount = #{pcount,jdbcType=INTEGER}
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectOne" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+select * from t_newsc where nid =#{nid} order   by   id   desc   limit   1
+  </select>
+</mapper>
