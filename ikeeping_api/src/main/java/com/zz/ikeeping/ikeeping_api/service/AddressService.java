@@ -22,4 +22,6 @@ public interface AddressService {
     // 删除指定id的地址信息
     @DeleteMapping("address/deleteById")
     R deleteById(@RequestParam("addid") Integer addid);
+
+
 }
