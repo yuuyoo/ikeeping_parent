@@ -1,5 +1,7 @@
 package com.zz.ikeeping.sns.service.impl;
 
+import com.zz.ikeeping.common.config.SnsConfig;
+import com.zz.ikeeping.common.util.JedisUtil;
 import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.Community;
 import com.zz.ikeeping.sns.dao.CommentMapper;
@@ -24,6 +26,9 @@ public class SnsServiceImpl implements SnsService {
 
     @Autowired
     private CommentMapper commentMapper;
+
+    @Autowired
+    private JedisUtil jedisUtil;
 
     //页面顶端展示话题类型
     @Override
@@ -61,6 +66,25 @@ public class SnsServiceImpl implements SnsService {
     public List<VCommunityDetail> showTopicAtMostComment(int cmid) {
         return communityDetailMapper.showTopicAtMostComment(cmid);
     }
+
+    //xx话题下的浏览量
+    @Override
+    public int pageView(int id, String IP) {
+        //判断当前用户是否浏览过该话题
+        Boolean ret = jedisUtil.sismember(SnsConfig.PAGEVIEWUSER + id, IP);
+
+        int count = SnsConfig.pageViewCount;
+
+        if (!ret) {
+            //使用redis中的set存储策略，将当前用户IP保存
+            jedisUtil.sadd(SnsConfig.PAGEVIEWUSER + id, IP);
+            //增加浏览量
+            SnsConfig.pageViewCount++;
+        }
+
+        return count;
+    }
+
 
     // 查看所有评论
     @Override
