@@ -27,7 +27,7 @@
     update t_communitydetail set count=#{count} where id = #{id}
   </update>
 
-  <insert id="add" parameterType="int">
+  <insert id="add" parameterType="com.zz.ikeeping.entity.CommunityDetail">
     insert into t_communitydetail(cmid,uid,pubtime,location,content,imgurl,count) values(#{cmid},#{uid},now(),#{location},#{content},#{imgurl},#{count})
   </insert>
 

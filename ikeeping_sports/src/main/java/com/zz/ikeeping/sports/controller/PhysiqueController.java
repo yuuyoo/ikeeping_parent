@@ -20,10 +20,8 @@ public class PhysiqueController {
 
     /**
      * 根据用户uid查询健康指数
-     * @param uid
-     * @return
      */
-    @GetMapping("sports/single.do")
+    @GetMapping("sports/list.do")
     public R findByUid(@RequestParam("uid") int uid) {
         return service.findByUid(uid);
     }

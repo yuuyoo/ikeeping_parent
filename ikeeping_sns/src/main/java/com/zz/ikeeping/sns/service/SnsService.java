@@ -3,6 +3,7 @@ package com.zz.ikeeping.sns.service;
 import com.zz.ikeeping.common.config.ProjectConfig;
 import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.Community;
+import com.zz.ikeeping.entity.CommunityDetail;
 import com.zz.ikeeping.sns.dao.CommunityDetailMapper;
 import com.zz.ikeeping.sns.vo.VCommunityDetail;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,7 +29,7 @@ public interface SnsService {
 
     List<Comment> allCommont();
 
-    int add(CommunityDetailMapper detailMapper);
+    int add(CommunityDetail detail);
 
     int addCommont(Comment comment);
 

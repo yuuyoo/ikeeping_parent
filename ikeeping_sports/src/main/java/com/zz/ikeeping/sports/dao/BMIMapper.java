@@ -2,7 +2,9 @@ package com.zz.ikeeping.sports.dao;
 
 import com.zz.ikeeping.entity.BMI;
 
+import java.util.List;
+
 public interface BMIMapper {
     int insert (BMI bmi);
-    BMI findByUid(int uid);
+    List<BMI> findByUid(int uid);
 }
