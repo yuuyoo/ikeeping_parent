@@ -3,17 +3,13 @@ package com.zz.ikeeping.server.user.service.impl;
 import com.zz.ikeeping.common.exception.UserException;
 import com.zz.ikeeping.common.util.*;
 import com.zz.ikeeping.common.config.ProjectConfig;
-
 import com.zz.ikeeping.common.vo.R;
 import com.zz.ikeeping.entity.User;
-
 import com.zz.ikeeping.server.user.dao.UserMapper;
 import com.zz.ikeeping.server.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,8 +18,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private JedisUtil jedisUtil;
 
-
-
     @Override
     public R checkPhone(String phone) {
         User user=userMapper.selectByPhone(phone);
@@ -31,7 +25,6 @@ public class UserServiceImpl implements UserService {
             return R.setOK("当前手机号可用");
         }else {
             return R.setERROR("手机号已经注册过，请找回密码");
-
         }
     }
 
@@ -52,15 +45,11 @@ public class UserServiceImpl implements UserService {
             } catch (Exception e) {
                 throw new UserException("用户注册异常"+ e.getMessage());
             }
-
             return R.setOK("您的初始密码为：", code);
         } else  {
             return R.setERROR("您已经注册请找回密码");
         }
-
-
     }
-
 
     @Override
     public R verifyCode(String phone, int code) {
@@ -80,7 +69,6 @@ public class UserServiceImpl implements UserService {
                         System.out.println("code"+code);*/
                     System.out.println(Integer.parseInt(jedisUtil.get(ProjectConfig.SMSCODE + phone))==(code));
                     try {
-
                         if (jedisUtil.get(ProjectConfig.SMSCODE + phone).equals(String.valueOf(code))) {
                             User user = new User();
                             // 随机生成的密码进行加密
@@ -90,8 +78,6 @@ public class UserServiceImpl implements UserService {
                             // 新增用户
                             userMapper.insert(user);
                             // 初始化其他
-
-
                         }
                     } catch (Exception e) {
                         try {
@@ -106,13 +92,6 @@ public class UserServiceImpl implements UserService {
                 }
             }
         }
-
         return  R.setERROR("亲，验证码过期，请重新获取验证码");
-
     }
-
-
-
-
-
 }
