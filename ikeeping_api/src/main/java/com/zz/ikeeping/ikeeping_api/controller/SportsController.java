@@ -14,7 +14,7 @@ public class SportsController {
     @Autowired
     private SportsService service;
     //根据用户输入的身高和体重计算用户的身体素质
-    @ApiOperation("根据用户输入的身高和体重计算用户的身体素质")
+    @ApiOperation(value = "计算用户的身体素质")
     @GetMapping("api/sports/calculate.do")
     public String calBMI(@RequestParam("weight") float weight, @RequestParam("height") float height){
         return service.calBMI(height, weight);

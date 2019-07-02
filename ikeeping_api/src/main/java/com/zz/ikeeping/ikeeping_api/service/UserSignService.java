@@ -12,8 +12,8 @@ public interface UserSignService {
     @GetMapping("usersign/all.do")
     R all(@RequestParam("token") String token);
     @GetMapping("/usersign/single.do")
-    R single(String token);
-    @GetMapping("/usersign/")
+    R single(@RequestParam("token") String token);
+    @GetMapping("/usersign/day.do")
     R signDays(@RequestParam("token") String token, @RequestParam("days") int days);
     @PostMapping("/usersign/signsave.do")
     R save(@RequestParam("token") String token);

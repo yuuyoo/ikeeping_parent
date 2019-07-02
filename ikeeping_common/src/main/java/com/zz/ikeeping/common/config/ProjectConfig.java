@@ -32,7 +32,7 @@ public class ProjectConfig {
     public static final String TOKENPHONE="user:";//记录手机号对应的令牌  有效期 30分钟
     public static final String USERLOGINCOUNT="uc:";// uc:手机号  次数  10分钟
     public static final String USERSD="userfreeze:";//手机号 所有冻结的手机号
-    public static final String SIGNKEY="usign:ljb";//记录每天签到  Set集合 内容 手机号
+    public static final String SIGNKEY="usign:ikeeping";//记录每天签到  Set集合 内容 手机号
     //
     public static final String TOKENHEAD="usertoken";
 

@@ -11,7 +11,7 @@
     <result column="flag" jdbcType="SMALLINT" property="flag" />
   </resultMap>
   <insert id="insert" parameterType="com.zz.ikeeping.entity.Points" useGeneratedKeys="true" keyProperty="id">
-    insert into t_points (uid, score,  info, startdate, enddate, flag)
+    insert into t_points (uid, score,info, startdate, enddate, flag)
     values ( #{uid,jdbcType=INTEGER}, #{score,jdbcType=INTEGER},
       #{info,jdbcType=VARCHAR}, #{startdate,jdbcType=DATE}, #{enddate,jdbcType=DATE},1)
   </insert>
