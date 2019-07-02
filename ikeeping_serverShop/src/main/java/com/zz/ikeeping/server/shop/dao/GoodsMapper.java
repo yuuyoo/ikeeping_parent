@@ -22,4 +22,11 @@ public interface GoodsMapper {
 
     List<GoodsDTO> selectByTypeid(Integer typeid);
 
+    List<GoodsDTO> selectByTypeidPriceAsc(Integer typeid);
+
+    List<GoodsDTO> selectByTypeidPriceDesc(Integer typeid);
+
+    List<GoodsDTO> selectByTypeidSellAsc(Integer typeid);
+
+    List<GoodsDTO> selectByTypeidSellDesc(Integer typeid);
 }

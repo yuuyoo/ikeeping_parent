@@ -29,4 +29,35 @@ public class GoodsServiceImpl implements GoodsService {
     public R getById(Integer gid) {
         return R.setOK("ok", goodsDao.selectByPrimaryKey(gid));
     }
+
+    @Override
+    public R getGoodsPageByTypePriceAsc(Integer typeid, Integer page, Integer count) {
+        PageHelper.startPage(page, count);
+        List<GoodsDTO> goodsList = goodsDao.selectByTypeidPriceAsc(typeid);
+        PageInfo<GoodsDTO> pageInfo = new PageInfo<>(goodsList);
+        return R.setOK("ok", pageInfo);
+    }
+
+    @Override
+    public R getGoodsPageByTypePriceDesc(Integer typeid, Integer page, Integer count) {
+        PageHelper.startPage(page, count);
+        List<GoodsDTO> goodsList = goodsDao.selectByTypeidPriceDesc(typeid);
+        PageInfo<GoodsDTO> pageInfo = new PageInfo<>(goodsList);
+        return R.setOK("ok", pageInfo);
+    }
+
+    @Override
+    public R getGoodsPageByTypeSellAsc(Integer typeid, Integer page, Integer count) {
+        PageHelper.startPage(page, count);
+        List<GoodsDTO> goodsList = goodsDao.selectByTypeidSellAsc(typeid);
+        PageInfo<GoodsDTO> pageInfo = new PageInfo<>(goodsList);
+        return R.setOK("ok", pageInfo);
+    }
+    @Override
+    public R getGoodsPageByTypeSellDesc(Integer typeid, Integer page, Integer count) {
+        PageHelper.startPage(page, count);
+        List<GoodsDTO> goodsList = goodsDao.selectByTypeidSellDesc(typeid);
+        PageInfo<GoodsDTO> pageInfo = new PageInfo<>(goodsList);
+        return R.setOK("ok", pageInfo);
+    }
 }

@@ -24,6 +24,7 @@ public class IkeepingApiApplication extends SpringBootServletInitializer {
 
     /**
      * 重写configure方法实现项目war运行
+     *
      * @param builder
      * @return
      */

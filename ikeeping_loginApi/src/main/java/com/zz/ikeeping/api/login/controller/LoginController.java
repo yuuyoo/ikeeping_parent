@@ -17,6 +17,8 @@ import java.util.List;
 public class LoginController {
     @Autowired
     private LoginService loginService;
+//    @Autowired
+//    private UpdateService updateService;
     //登录
     @PostMapping("/api/login/login.do")
     public R login(String phone, String password){

@@ -22,7 +22,7 @@ public class SwaggerConfig {
      * */
     public ApiInfo createA(){
         ApiInfo info=new ApiInfoBuilder().title("统一消息平台").
-                contact( new Contact("杨超杰","http://www.mobiletrain.org","2687518378")).
+                contact( new Contact("杨超杰","http://www.mobiletrain.org","2687518378@qq.com")).
                 description("实现短信、邮箱等发送信息").build();
         return info;
     }
