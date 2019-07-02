@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Api(value = "咨询详情",tags = "咨询详情")
+@Api(value = "咨讯详情",tags = "咨询详情")
 @Controller
 @ResponseBody
 public class NewsDetailController {

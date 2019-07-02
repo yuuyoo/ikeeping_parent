@@ -4,6 +4,7 @@ import com.zz.ikeeping.common.config.SnsConfig;
 import com.zz.ikeeping.common.util.JedisUtil;
 import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.Community;
+import com.zz.ikeeping.entity.CommunityDetail;
 import com.zz.ikeeping.sns.dao.CommentMapper;
 import com.zz.ikeeping.sns.dao.CommunityDetailMapper;
 import com.zz.ikeeping.sns.dao.CommunityMapper;
@@ -73,18 +74,23 @@ public class SnsServiceImpl implements SnsService {
         //判断当前用户是否浏览过该话题
         Boolean ret = jedisUtil.sismember(SnsConfig.PAGEVIEWUSER + id, IP);
 
-        int count = SnsConfig.pageViewCount;
+        String viewCount = jedisUtil.get(SnsConfig.PAGEVIEWCOUNT + id);
+
+        //新发表话题设置浏览量初始值为0
+        if (viewCount == null) {
+            jedisUtil.set(SnsConfig.PAGEVIEWCOUNT + id, "0");
+        }
 
         if (!ret) {
             //使用redis中的set存储策略，将当前用户IP保存
             jedisUtil.sadd(SnsConfig.PAGEVIEWUSER + id, IP);
-            //增加浏览量
-            SnsConfig.pageViewCount++;
+
+            //将当前话题的浏览量保存到redis中，浏览量增加 1
+            jedisUtil.incr(SnsConfig.PAGEVIEWCOUNT + id);
         }
 
-        return count;
+        return Integer.parseInt(viewCount);
     }
-
 
     // 查看所有评论
     @Override
@@ -94,8 +100,9 @@ public class SnsServiceImpl implements SnsService {
 
     // 新增话题下的说说
     @Override
-    public int add(CommunityDetailMapper detailMapper) {
-        return communityDetailMapper.add(detailMapper);
+    public int add(CommunityDetail detail) {
+        System.out.println(detail);
+        return communityDetailMapper.add(detail);
     }
 
     // 新增评论
