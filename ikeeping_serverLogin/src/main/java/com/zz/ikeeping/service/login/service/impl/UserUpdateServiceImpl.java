@@ -35,4 +35,11 @@ public class UserUpdateServiceImpl implements UserUpdateService {
        }
        return R.setOK("更新成功",i);
     }
+    public static void main(String[] args) {
+
+
+        String token ="eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1OTQ5NDAzMjc3Nzc3OTYwOTYiLCJzdWIiOiJ7XCJpZFwiOlwiNTk0OTQwMzI3Nzc3Nzk2MDk2XCIsXCJwaG9uZVwiOlwiMTg1MzAyNTAzMjFcIixcInVpZFwiOjN9IiwiaWF0IjoxNTYxODg2NDI3LCJleHAiOjE1NjE4ODgyMjd9.EB6YaDSHYfjM6cG0vUhXHwmFFIN5p6GP4J7hC5tpsXY";
+        LoginToken loginToken= UserTokenUtil.parseToken(JwtUtil.parseJWT(token));
+        System.out.println(loginToken.getUid());
+    }
 }
