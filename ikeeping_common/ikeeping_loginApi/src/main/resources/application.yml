@@ -1,0 +1,15 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: ApiLoginConsumer
+server:
+  port: 9803
+feign:
+  httpclient:
+    enabled: true
+
+
+

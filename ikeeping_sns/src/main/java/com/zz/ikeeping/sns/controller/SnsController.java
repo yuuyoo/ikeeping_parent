@@ -44,13 +44,13 @@ public class SnsController {
     }
 
     @GetMapping("sns/newPublishTopicDetail.do")
-    public R newPublishTopicDetail(int cmid) {
+    public R newPublishTopicDetail(@RequestParam("cmid") int cmid) {
         List<VCommunityDetail> list = snsService.newPublishTopicDetail(cmid);
         return R.setOK("OK",list);
     }
 
     @GetMapping("sns/showTopicAtMostComment.do")
-    public R showTopicAtMostComment(int cmid) {
+    public R showTopicAtMostComment(@RequestParam("cmid") int cmid) {
         List<VCommunityDetail> list = snsService.showTopicAtMostComment(cmid);
         return R.setOK("OK",list);
     }
@@ -63,7 +63,7 @@ public class SnsController {
     }
 
     @PostMapping("sns/add.do")
-    public R addCommont(CommunityDetailMapper detailMapper) {
+    public R addCommont(@RequestBody CommunityDetailMapper detailMapper) {
         return R.setOK("OK",(snsService.add(detailMapper)));
     }
     @PostMapping("sns/addCommont.do")

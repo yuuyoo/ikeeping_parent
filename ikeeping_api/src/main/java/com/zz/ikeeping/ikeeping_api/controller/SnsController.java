@@ -6,6 +6,8 @@ import com.zz.ikeeping.common.vo.R;
 import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.CommunityDetail;
 import com.zz.ikeeping.ikeeping_api.service.SnsService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -78,13 +80,14 @@ public class SnsController {
 
     // 点赞内容分享
     @PutMapping("sns/topic.do")
-    R topicPraise(@RequestParam("id") int id, @RequestParam("count") int count){
+    public R topicPraise(@RequestParam("id") int id, @RequestParam("count") int count){
         return snsService.topicPraise(id, count);
     }
 
     // 评论点赞
+    @ApiOperation(value = "评论点赞")
     @PutMapping("sns/commont.do")
-    R commont(@RequestParam("id") int id, @RequestParam("count") int count){
+    public R commont(@RequestParam("id") int id, @RequestParam("count") int count){
         return snsService.commont(id, count);
     }
 }
