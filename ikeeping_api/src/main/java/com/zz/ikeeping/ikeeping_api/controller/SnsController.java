@@ -1,13 +1,14 @@
 package com.zz.ikeeping.ikeeping_api.controller;
 
 
-import com.zz.ikeeping.common.config.ProjectConfig;
 import com.zz.ikeeping.common.vo.R;
 import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.CommunityDetail;
 import com.zz.ikeeping.ikeeping_api.service.SnsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class SnsController {
@@ -51,12 +52,18 @@ public class SnsController {
         return snsService.commentCount(id);
     }
 
+    //xx话题下的浏览量
+    @GetMapping("api/sns/pageViewCount.do")
+    public R pageViewCount(@RequestParam("id") int id, HttpServletRequest request){
+        String IP = request.getRemoteAddr();
+        return snsService.pageViewCount(id, IP);
+    }
+
     // 查看所有评论
     @GetMapping("api/sns/allCommont.do")
     public R allCommont() {
         return snsService.allCommont();
     }
-
 
     // 新增内容分享
     @PostMapping("sns/add.do")

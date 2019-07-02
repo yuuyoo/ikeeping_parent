@@ -24,6 +24,8 @@ public interface SnsService {
 
     List<VCommunityDetail> showTopicAtMostComment(int cmid);
 
+    int pageView(int id, String IP);
+
     List<Comment> allCommont();
 
     int add(CommunityDetailMapper detailMapper);
