@@ -19,6 +19,6 @@ public interface PhysiqueService {
      * @param uid
      * @return
      */
-    @GetMapping("sports/single.do")
+    @GetMapping("sports/list.do")
     public R findByUid(@RequestParam("uid") int uid);
 }

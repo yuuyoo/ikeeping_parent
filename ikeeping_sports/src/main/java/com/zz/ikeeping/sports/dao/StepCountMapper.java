@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface StepCountMapper {
     int insert (StepCount stepCount);
-    StepCount findByUid(int uid);
+    List<StepCount> findByUid(int uid);
 }
