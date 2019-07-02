@@ -68,7 +68,7 @@ public class SnsController {
     }
 
     @PostMapping("sns/add.do")
-    public R addCommont(CommunityDetailMapper detailMapper) {
+    public R addCommont(@RequestBody CommunityDetailMapper detailMapper) {
         return R.setOK("OK",(snsService.add(detailMapper)));
     }
 

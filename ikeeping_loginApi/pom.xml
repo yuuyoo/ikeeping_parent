@@ -42,6 +42,10 @@
             <groupId>com.zz.ikeeping</groupId>
             <artifactId>ikeeping_common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.zz.ikeeping</groupId>
+            <artifactId>ikeeping_entity</artifactId>
+        </dependency>
     </dependencies>
 
 
