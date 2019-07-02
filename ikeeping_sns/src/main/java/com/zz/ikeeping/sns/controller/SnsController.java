@@ -4,6 +4,7 @@ import com.zz.ikeeping.common.config.ProjectConfig;
 import com.zz.ikeeping.common.vo.R;
 import com.zz.ikeeping.entity.Comment;
 import com.zz.ikeeping.entity.Community;
+import com.zz.ikeeping.entity.CommunityDetail;
 import com.zz.ikeeping.sns.dao.CommunityDetailMapper;
 import com.zz.ikeeping.sns.service.SnsService;
 import com.zz.ikeeping.sns.vo.VCommunityDetail;
@@ -56,8 +57,8 @@ public class SnsController {
     }
 
     @GetMapping("sns/pageViewCount.do")
-    public R pageViewCount(@RequestParam("id") int id, @RequestParam("IP") String Ip) {
-        int count = snsService.pageView(id, Ip);
+    public R pageViewCount(@RequestParam("id") int id, @RequestParam("IP") String IP) {
+        int count = snsService.pageView(id, IP);
         return R.setOK("OK",count);
     }
 
@@ -68,8 +69,8 @@ public class SnsController {
     }
 
     @PostMapping("sns/add.do")
-    public R addCommont(CommunityDetailMapper detailMapper) {
-        return R.setOK("OK",(snsService.add(detailMapper)));
+    public R add(@RequestBody CommunityDetail detail) {
+        return R.setOK("OK",(snsService.add(detail)));
     }
 
     @PostMapping("sns/addCommont.do")

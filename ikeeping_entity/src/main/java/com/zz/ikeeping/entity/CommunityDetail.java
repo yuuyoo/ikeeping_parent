@@ -20,4 +20,5 @@ public class CommunityDetail {
 
     private String imgurl;
 
+    private Integer count;
 }
