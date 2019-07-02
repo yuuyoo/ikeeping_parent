@@ -1,5 +1,6 @@
 package com.zz.ikeeping.sns.dao;
 
+import com.zz.ikeeping.entity.CommunityDetail;
 import com.zz.ikeeping.sns.vo.VCommunityDetail;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -13,7 +14,7 @@ public interface CommunityDetailMapper {
     int topicPraise(@RequestParam("id") int id, @RequestParam("count") int count);
 
     //新增发表
-    int add(CommunityDetailMapper detailMapper);
+    int add(CommunityDetail detail);
 
     List<VCommunityDetail> newPublishTopicDetail(int cmid);
 

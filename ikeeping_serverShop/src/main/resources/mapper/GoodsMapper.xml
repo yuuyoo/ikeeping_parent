@@ -124,72 +124,77 @@
   </update>
 
   <select id="selectByTypeid" parameterType="int" resultMap="goodsDTOMap">
-  select id,name,price,imgurl,goodstype,sum(goodscount) sellcount
+  select id,name,price,imgurl,goodstype,ifnull(sellcount,0) sellcount
   from
-      (select g.id, g.name, g.price, g.imgurl, g.goodstype,od.goodscount,o.status
-      from t_goods g
-      inner join t_orderdetail od
-      on g.id = od.gid
-      inner join t_order o
-      on o.id = od.oid
-      where goodstype=#{goodstype}
-      and o.status >=2) dto
-  group by id;
+      (select id,name,price,imgurl,goodstype,count(goodscount) sellcount
+      from
+          (select g.id, g.name, g.price, g.imgurl, g.goodstype, case when o.status=1 then 0 else od.goodscount end as goodscount
+          from t_goods g
+          left join t_orderdetail od
+          on g.id = od.gid
+          left join t_order o
+          on o.id = od.oid
+          where goodstype=#{goodstype}) dto
+      group by id) ddo
   </select>
   <select id="selectByTypeidPriceAsc" parameterType="int" resultMap="goodsDTOMap">
-  select id,name,price,imgurl,goodstype,sum(goodscount) sellcount
+  select id,name,price,imgurl,goodstype,ifnull(sellcount,0) sellcount
   from
-      (select g.id, g.name, g.price, g.imgurl, g.goodstype,od.goodscount,o.status
-      from t_goods g
-      inner join t_orderdetail od
-      on g.id = od.gid
-      inner join t_order o
-      on o.id = od.oid
-      where goodstype=#{goodstype}
-      and o.status >=2) dto
-  group by id
-  order by price asc;
+      (select id,name,price,imgurl,goodstype,count(goodscount) sellcount
+      from
+          (select g.id, g.name, g.price, g.imgurl, g.goodstype, case when o.status=1 then 0 else od.goodscount end as goodscount
+          from t_goods g
+          left join t_orderdetail od
+          on g.id = od.gid
+          left join t_order o
+          on o.id = od.oid
+          where goodstype=#{goodstype}) dto
+      group by id) ddo
+  order by price asc
   </select>
   <select id="selectByTypeidPriceDesc" parameterType="int" resultMap="goodsDTOMap">
-  select id,name,price,imgurl,goodstype,sum(goodscount) sellcount
+  select id,name,price,imgurl,goodstype,ifnull(sellcount,0) sellcount
   from
-      (select g.id, g.name, g.price, g.imgurl, g.goodstype,od.goodscount,o.status
-      from t_goods g
-      inner join t_orderdetail od
-      on g.id = od.gid
-      inner join t_order o
-      on o.id = od.oid
-      where goodstype=#{goodstype}
-      and o.status >=2) dto
-  group by id
-  order by price desc;
+      (select id,name,price,imgurl,goodstype,count(goodscount) sellcount
+      from
+          (select g.id, g.name, g.price, g.imgurl, g.goodstype, case when o.status=1 then 0 else od.goodscount end as goodscount
+          from t_goods g
+          left join t_orderdetail od
+          on g.id = od.gid
+          left join t_order o
+          on o.id = od.oid
+          where goodstype=#{goodstype}) dto
+      group by id) ddo
+  order by price desc
   </select>
   <select id="selectByTypeidSellAsc" parameterType="int" resultMap="goodsDTOMap">
-  select id,name,price,imgurl,goodstype,sum(goodscount) sellcount
+  select id,name,price,imgurl,goodstype,ifnull(sellcount,0) sellcount
   from
-      (select g.id, g.name, g.price, g.imgurl, g.goodstype,od.goodscount,o.status
-      from t_goods g
-      inner join t_orderdetail od
-      on g.id = od.gid
-      inner join t_order o
-      on o.id = od.oid
-      where goodstype=#{goodstype}
-      and o.status >=2) dto
-  group by id
-  order by sellcount asc;
+      (select id,name,price,imgurl,goodstype,count(goodscount) sellcount
+      from
+          (select g.id, g.name, g.price, g.imgurl, g.goodstype, case when o.status=1 then 0 else od.goodscount end as goodscount
+          from t_goods g
+          left join t_orderdetail od
+          on g.id = od.gid
+          left join t_order o
+          on o.id = od.oid
+          where goodstype=#{goodstype}) dto
+      group by id) ddo
+  order by sellcount asc
   </select>
   <select id="selectByTypeidSellDesc" parameterType="int" resultMap="goodsDTOMap">
-  select id,name,price,imgurl,goodstype,sum(goodscount) sellcount
+  select id,name,price,imgurl,goodstype,ifnull(sellcount,0) sellcount
   from
-      (select g.id, g.name, g.price, g.imgurl, g.goodstype,od.goodscount,o.status
-      from t_goods g
-      inner join t_orderdetail od
-      on g.id = od.gid
-      inner join t_order o
-      on o.id = od.oid
-      where goodstype=#{goodstype}
-      and o.status >=2) dto
-  group by id
-  order by sellcount desc;
+      (select id,name,price,imgurl,goodstype,count(goodscount) sellcount
+      from
+          (select g.id, g.name, g.price, g.imgurl, g.goodstype, case when o.status=1 then 0 else od.goodscount end as goodscount
+          from t_goods g
+          left join t_orderdetail od
+          on g.id = od.gid
+          left join t_order o
+          on o.id = od.oid
+          where goodstype=#{goodstype}) dto
+      group by id) ddo
+  order by sellcount desc
   </select>
 </mapper>

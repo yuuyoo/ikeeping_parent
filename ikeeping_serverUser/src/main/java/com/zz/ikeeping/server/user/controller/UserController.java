@@ -17,7 +17,7 @@ public class UserController {
     // 新增
     @PostMapping("user/save.do")
     public R save(@RequestBody User user) throws UserException {
-        return userService.save(user);
+        return userService.insert(user);
     }
     
     // 查询手机号是否被注册
@@ -35,11 +35,7 @@ public class UserController {
             return R.setERROR();
         }
     }
-    // 发送验证码
-    @GetMapping("user/sendcode.do")
-    public R sendCode(@RequestParam("phone") String phone) {
-        return userService.sendCode(phone);
-    }
+
 
 
 
