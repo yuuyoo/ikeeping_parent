@@ -23,10 +23,13 @@ public interface SnsService {
     R commentCount(@RequestParam("id") int id);
 
     @GetMapping("sns/newPublishTopicDetail.do")
-    R newPublishTopicDetail(int cmid);
+    R newPublishTopicDetail(@RequestParam("cmid") int cmid);
 
     @GetMapping("sns/showTopicAtMostComment.do")
-    R showTopicAtMostComment(int cmid);
+    R showTopicAtMostComment(@RequestParam("cmid") int cmid);
+
+    @GetMapping("sns/pageViewCount.do")
+    R pageViewCount(@RequestParam("id") int id, @RequestParam("IP") String IP);
 
     @GetMapping("sns/allCommont.do")
     R allCommont();
