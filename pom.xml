@@ -86,7 +86,7 @@
         <!-- 支付宝支付sdk -->
         <alipay.version>3.7.26.ALL</alipay.version>
         <!--接收reuqest请求-->
-        <httpclient.version>4.5.9</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
     </properties>
 
     <!-- 版本限定 -->
