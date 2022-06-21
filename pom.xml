@@ -42,7 +42,7 @@
         <!-- Swagger API在线文档管理版本 -->
         <swagger.version>2.9.2</swagger.version>
         <!-- MySQL数据库驱动版本 -->
-        <mysql.version>8.0.16</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <!-- MyBatisBoot ORM框架版本 -->
         <mybatisboot.version>2.0.1</mybatisboot.version>
         <!-- Druid 数据库连接池版本    -->
